@@ -2,21 +2,24 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="js/script.js"></script>
+
     <title>Sign up / login</title>
 </head>
 <body>
     <div style="float:left;">
     <h3>Sign up</h3>
     <input id="firstName" placeholder="First name"><input id="lastName" placeholder="Last name"><br>
-    <input placeholder="Email"><br>
-    <input placeholder="Phone number"><br>
-    <input placeholder="Password"><input placeholder="Confirm Password"><br>
+    <input id="email" placeholder="Email"><br>
+    <input id="phone" placeholder="Phone number"><br>
+    <input id="newPassword" placeholder="Password"><input placeholder="Confirm Password"><br>
     <select>
         <option>Select account type</option>
         <option>User</option>
         <option>Property owner</option>
     </select>
-    <button>Sign up</button>
+    <button id="createUser">Sign up</button>
     </div>
 
     <!-- <div style="float: left; width:500px;"></div> -->
