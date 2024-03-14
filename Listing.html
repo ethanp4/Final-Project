@@ -18,10 +18,8 @@
             <input type="text" placeholder="Address">
             <input type="text" placeholder="Description">
             <p>Square ft</p>
-            <select>
             <button class="dropbtn">Dropdown</button>
-            <option class=sw>1</option>
-            </select>
+
             <p>Public transit accessible</p>
             <input type="checkbox">
             <p>Parking garage</p>
@@ -30,16 +28,57 @@
             <button>Add Workspace</button>
             <button>Edit Workspace</button>
             <button>Delete Workspace</button>
-        </div>
 
+        </div>
 <!-- CALENDAR -->
         <div id="calendar">
             <h1>For Rent Properties & Workplaces</h1>
         </div>
-<!-- Properties -->
-        <div id="myProperty">
+<!-- For Rent Properties & Workplaces -->
+        <div id="myProperties">
             <h3>My Properties</h3>
-            
+            <label for="p1">Property 1</label>
+            <label for="p2">Property 2</label>
+            <label for="p3">Property 3</label>
+            <label for="p4">Property 4</label>
+            <label for="p5">Property 5</label>
+            <label for="p6">Property 6</label>
+            <label for="p7">Property 7</label>
+            <label for="p8">Property 8</label>
+            <label for="p9">Property 9</label>
+        </div>
+        <div id ="workspaces">
+            <p>Available dates: <span class="dot">o</span></p> <!-- edit "o"  out when doing the CSS: 
+                .dot {
+                height: 25px;
+                width: 25px;
+                background-color: #bbb;
+                border-radius: 50%;
+                display: inline-block;
+              }-->
+            <label for="lease">Lease Term: </label>
+            <select name="lease" id="lease">
+            <option value="1_Week">1 Week</option>
+            <option value="1_Month">1 Month</option>
+            <option value="3_Months">3 Months</option>
+        </select>
+            <h4></h4>
+            <label for="conferenceHall">Conference Hall</label>
+            <p>Maximum Capacity: 25</p>
+            <p>Smoking: No</p>
+            <p>Price: $75</p>
+            <label for="napPod">Nap Pod</label>
+            <p>Maximum Capacity: 2</p>
+            <p>Smoking: No</p>
+            <p>Price: $30</p>
+            <label for="outdoorSpace">Outdoor Space</label>
+            <p>Maximum Capacity: 20</p>
+            <p>Smoking: Yes</p>
+            <p>Price: $50</p>
+            <label for="privateCubicle">Private Cubicle</label>
+            <p>Maximum Capacity: 7</p>
+            <p>Smoking: No</p>
+            <p>Price: $15</p>
         </div>
 
 </body>
