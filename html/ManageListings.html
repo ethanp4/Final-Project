@@ -5,82 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="js/ManageListings.js"></script>
+    <script src="../js/ManageListings.js"></script>
 
     <title>Document</title>
 </head>
 <body>
-        
-<!-- LIST A PROPERTY -->
-        <div id="listing">
-            <h1 class="heading">List and Property Listings</h1>
-            <h3>List a Property</h3>
-            <input type="text" placeholder="Name">
-            <input type="text" placeholder="Address">
-            <input type="text" placeholder="Description">
-            <p>Square ft</p>
-            <button class="dropbtn">Dropdown</button>
+    <h3>List a property</h3>
+    <form id="createListing">
 
-            <p>Public transit accessible</p>
-            <input type="checkbox">
-            <p>Parking garage</p>
-            <input type="checkbox">
+        <input required id="propertyName" placeholder="Property Name"><br>
+        <input required id="address" placeholder="Address"><br>
+        <input required id="capacity" placeholder="Capacity" type="number"><br>
+        <input required id="description" placeholder="Description"><br>
+        <input required id="squareFt" placeholder="Square Feet" min="0" type="number"><br>
+        <input required id="price" placeholder="Price" min="0" type="number"><br>
+        <label for="parkingGarage">Parking garage</label><input id="parkingGarage" type="checkbox"><br>
+        <label for="publicTransit">Public transit accessible</label><input id="publicTransit" type="checkbox"><br>
+        <label for="smoking">Smoking</label><input id="smoking" type="checkbox"><br>
 
-            <button>Add Workspace</button>
-            <button>Edit Workspace</button>
-            <button>Delete Workspace</button>
+        <button id="createListing">Create</button>
+    </form>
+    <div id="status"></div>
 
-        </div>
-<!-- CALENDAR -->
-        <div id="calendar">
-            <h1>For Rent Properties & Workplaces</h1>
-        </div>
-<!-- For Rent Properties & Workplaces -->
-        <div id="myProperties">
-            <h3>My Properties</h3>
-            <label for="p1">Property 1</label>
-            <label for="p2">Property 2</label>
-            <label for="p3">Property 3</label>
-            <label for="p4">Property 4</label>
-            <label for="p5">Property 5</label>
-            <label for="p6">Property 6</label>
-            <label for="p7">Property 7</label>
-            <label for="p8">Property 8</label>
-            <label for="p9">Property 9</label>
-        </div>
-        <div id ="workspaces">
-            <p>Available dates: <span class="dot">o</span></p> <!-- edit "o"  out when doing the CSS: 
-                .dot {
-                height: 25px;
-                width: 25px;
-                background-color: #bbb;
-                border-radius: 50%;
-                display: inline-block;
-              }-->
-            <label for="lease">Lease Term: </label>
-            <select name="lease" id="lease">
-            <option value="1_Week">1 Week</option>
-            <option value="1_Month">1 Month</option>
-            <option value="3_Months">3 Months</option>
-        </select>
-            <h4></h4>
-            <label for="conferenceHall">Conference Hall</label>
-            <p>Maximum Capacity: 25</p>
-            <p>Smoking: No</p>
-            <p>Price: $75</p>
-            <label for="napPod">Nap Pod</label>
-            <p>Maximum Capacity: 2</p>
-            <p>Smoking: No</p>
-            <p>Price: $30</p>
-            <label for="outdoorSpace">Outdoor Space</label>
-            <p>Maximum Capacity: 20</p>
-            <p>Smoking: Yes</p>
-            <p>Price: $50</p>
-            <label for="privateCubicle">Private Cubicle</label>
-            <p>Maximum Capacity: 7</p>
-            <p>Smoking: No</p>
-            <p>Price: $15</p>
-        </div>
+    <h3>Your listings</h3>
+    <div id="yourListings"></div>
 
 </body>
 </html>
