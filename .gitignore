@@ -1,2 +1,5 @@
-Project Proposal.docx
-Project Website Wireframe Design.odt
+*.docx
+*.odt
+*.pdf
+.vscode
+.directory
