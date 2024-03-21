@@ -12,8 +12,7 @@ $(() => {
         password = $("#newPassword").val()
 
         //check if user already exists
-        if (userData.some((user) => user.email == email)) {
-            $("#signUpStatus").html("User already exists")
+        if (checkIfUserExists(email)) {
             return
         }
 
@@ -33,4 +32,13 @@ $(() => {
         window.location.href = "/html/Main.html"
     })
 })
+
+function checkIfUserExists(email) {
+    var userData = JSON.parse(localStorage.getItem("userData"))
+    if (userData.some((user) => user.email == email)) {
+        $("#signUpStatus").html("User already exists")
+        return true
+    }   
+    return false
+}
 
