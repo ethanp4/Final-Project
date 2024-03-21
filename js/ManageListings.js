@@ -1,9 +1,14 @@
+
 $(() => {
+    //retrieve data from local storage
     var properties = JSON.parse(localStorage.getItem("properties"))
 
+    //add data to list
     updateListingsList()
 
+    //create new listing
     $("#createListing").submit((event) => {
+        //prevent default behaviour (page refresh)
         event.preventDefault()
 
         var propertyName = $("#propertyName").val()
@@ -16,6 +21,7 @@ $(() => {
         var publicTransit = $("#publicTransit").is(":checked")
         var smoking = $("#smoking").is(":checked")
 
+        //add data to array
         properties.push({
             "propertyName": propertyName,
             "address": address,
@@ -28,20 +34,10 @@ $(() => {
             "smoking": smoking
         })
 
-        $("#yourListings").append(`
-            <div>
-                <h4>${propertyName}</h4>
-                <p>${address}</p>
-                <p>${capacity}</p>
-                <p>${description}</p>
-                <p>${squareFt}</p>
-                <p>${price}</p>
-                <p>Parking Garage: ${parkingGarage?"Yes":"No"}</p>
-                <p>Public Transit: ${publicTransit?"Yes":"No"}</p>
-                <p>Smoking: ${smoking?"Yes":"No"}</p>
-            </div>
-        `)
+        //update list
+        updateListingsList()
 
+        //clear form
         $("#propertyName").val("")
         $("#address").val("")
         $("#capacity").val("")
@@ -52,6 +48,7 @@ $(() => {
         $("#publicTransit").prop("checked", false)
         $("#smoking").prop("checked", false)
 
+        //set data in local storage for consistency
         localStorage.setItem("properties", JSON.stringify(properties))
 
         console.log(`Localstorage is ${JSON.stringify(localStorage.getItem("properties"))}`)
@@ -62,10 +59,12 @@ $(() => {
 })
 
 function updateListingsList() { 
+    //retrieve data from localstorage
     var properties = JSON.parse(localStorage.getItem("properties"))
 
     console.log(properties)
 
+    //add data to list
     properties.forEach(property => {
         $("#yourListings").append(`
         <div>
@@ -79,7 +78,6 @@ function updateListingsList() {
             <p>Public Transit: ${property.publicTransit?"Yes":"No"}</p>
             <p>Smoking: ${property.smoking?"Yes":"No"}</p>
         </div>
-        
         `)        
     });
 }
