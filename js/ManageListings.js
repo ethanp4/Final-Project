@@ -1,5 +1,7 @@
 $(() => {
-    var properties = []
+    var properties = JSON.parse(localStorage.getItem("properties"))
+
+    updateListingsList()
 
     $("#createListing").submit((event) => {
         event.preventDefault()
@@ -50,6 +52,34 @@ $(() => {
         $("#publicTransit").prop("checked", false)
         $("#smoking").prop("checked", false)
 
+        localStorage.setItem("properties", JSON.stringify(properties))
+
+        console.log(`Localstorage is ${JSON.stringify(localStorage.getItem("properties"))}`)
+        console.log(`As array that is ${JSON.parse(localStorage.getItem("properties"))}`)
+
         $("#status").text("Listing created!")
     })
 })
+
+function updateListingsList() { 
+    var properties = JSON.parse(localStorage.getItem("properties"))
+
+    console.log(properties)
+
+    properties.forEach(property => {
+        $("#yourListings").append(`
+        <div>
+            <h4>${property.propertyName}</h4>
+            <p>${property.address}</p>
+            <p>${property.capacity}</p>
+            <p>${property.description}</p>
+            <p>${property.squareFt}</p>
+            <p>${property.price}</p>
+            <p>Parking Garage: ${property.parkingGarage?"Yes":"No"}</p>
+            <p>Public Transit: ${property.publicTransit?"Yes":"No"}</p>
+            <p>Smoking: ${property.smoking?"Yes":"No"}</p>
+        </div>
+        
+        `)        
+    });
+}
