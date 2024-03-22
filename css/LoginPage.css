@@ -1,27 +1,24 @@
-
-
 .container {
     display: flex;
     justify-content: center;
     margin-top: 8%;
 }
+
 button {
     background-color: #0000ff;
     color: rgb(255, 255, 255);
 }
 
-input, button {
-    border-radius: 7px;;
-    margin: 2px 0px;;
+input,
+button {
+    border-radius: 7px;
+    margin: 2px 0px;
 }
 
-h3 {
-    text-align: center; 
-}
 
 /* ------------DIV 1---------------- */
 
-#firstName {
+/* #firstName {
   margin-right: 10px
 }
 #lastName {
@@ -59,14 +56,14 @@ select {
 }
 
 
-/* --------------DIV 2------------- */
-.div2 {
+
+/* .div2 {
     margin: 100px 50px;
     font-size: 10px;
-}
+} */
 
 /* --------------DIV 3----------------- */
-.div3 {
+/* .div3 {
     text-align: center;
 }
 .div3 > h3 {
@@ -93,4 +90,4 @@ select {
 
 #signUp {
     font-size: 10px;
-}
+}  */
