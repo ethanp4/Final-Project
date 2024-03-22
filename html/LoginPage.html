@@ -1,46 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <link rel="stylesheet" href="../css/style.css">
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-  <script src="../js/LoginSignUp.js"></script>
-
-  <title>Sign up / login</title>
+    <link rel="stylesheet" href="css/LoginPage.css">
+    <title>Sign up / login</title>
 </head>
-
 <body>
-  <div>
+    <!-- SIGN UP DIV -->
+    <div class="container">
+    <div style="float:left;" class="div1">
     <h3>Sign up</h3>
-    <form id="signUp">
-      <h4 style="margin-bottom: 4px">Login Info (required)</h4>
-      <input id="newUsername" required placeholder="Username"><br>
-      <input required id="newPassword" placeholder="Password"><input id="confirmPassword" required
-        placeholder="Confirm Password"><br>
+    <input id="firstName" placeholder="First name">
+    <input id="lastName" placeholder="Last name"><br>
+    <input placeholder="Email"><br>
+    <input placeholder="Phone number"><br>
+    <input class="password" placeholder="Password">
+    <input class="confirmPass" placeholder="Confirm Password"><br>
 
-      <h4 style="margin-bottom: 4px">Personal Info (not required)</h4>
-      <input id="firstName" placeholder="First name"><input id="lastName" placeholder="Last name"><br>
-      <input id="email" placeholder="Email"><br>
-      <input id="phone" placeholder="Phone number"><br>
+    <select>
+        <option class = "option1">Select account type</option>
+        <option>User</option>
+        <option>Property owner</option>
+    </select>
+    <button id="signUp">Sign up</button>
+    </div>
 
-      <button style="margin-top: 10px">Sign up</button>
-      <div id="signUpStatus"></div>
-    </form>
-  </div>
+    <!-- <div style="float: left; width:500px;"></div> -->
+    <div class="div2">
+        <h3>OR</h3>
+    </div>
 
-  <div>
-    <form id="signIn">
-      <h3 style="margin-bottom: 4px">Sign in</h3>
-      <input id="username" required placeholder="Username"><br>
-      <input id="password" required placeholder="Password"><br>
-      <button style="margin-top: 10px">Sign in</button><br>
-      <div id="signInStatus"></div>
-    </form>
-  </div>
-
-  <button id="clearLocalstorage" onclick="localStorage.clear(); location.reload();">Clear localstorage</button>
-
+    <div style="float:left;" class="div3">
+        <h3>Sign in</h3>
+        <input id="username" placeholder="Username"><br>
+        <input id="password" placeholder="Password"><br>
+        <button id="signIn">Sign in</button><br>
+        <button id="forgotPass">Forgot password</button>
+    </div>
+    
+</div>
 </body>
-
 </html>
