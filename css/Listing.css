@@ -67,16 +67,13 @@ margin-left: 300px;
 }
 
 #div3 > label:nth-last-of-type(2n) {
-    background-color: #0000ff;
     margin-right: 55px;
 }
 #div3 > label:nth-last-of-type(3n) {
-    background-color: green;
     margin-right: 110px;
 }
 
 #div3 > label:nth-last-child(4) {
-    background-color: yellow;
     margin-right: 150px;
 }
 
