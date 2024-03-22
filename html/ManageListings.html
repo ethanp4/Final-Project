@@ -1,31 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="../js/ManageListings.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="../js/ManageListings.js"></script>
 
-    <title>Document</title>
+  <title>Your Listings</title>
 </head>
+
 <body>
-    <h3>List a property</h3>
-    <form id="createListing">
+  <h3>List a property</h3>
+  <form id="createListing">
 
-        <input required id="propertyName" placeholder="Property Name"><br>
-        <input required id="address" placeholder="Address"><br>
-        <input required id="capacity" placeholder="Capacity" type="number"><br>
-        <input required id="description" placeholder="Description"><br>
-        <input required id="squareFt" placeholder="Square Feet" min="0" type="number"><br>
-        <input required id="price" placeholder="Price" min="0" type="number"><br>
-        <label for="parkingGarage">Parking garage</label><input id="parkingGarage" type="checkbox"><br>
-        <label for="publicTransit">Public transit accessible</label><input id="publicTransit" type="checkbox"><br>
-        <label for="smoking">Smoking</label><input id="smoking" type="checkbox"><br>
+    <input required id="propertyName" placeholder="Property Name"><br>
+    <input required id="address" placeholder="Address"><br>
+    <input required id="capacity" placeholder="Capacity" type="number"><br>
+    <input required id="description" placeholder="Description"><br>
+    <input required id="squareFt" placeholder="Square Feet" min="0" type="number"><br>
+    <input required id="price" placeholder="Price" min="0" type="number"><br>
+    <label for="parkingGarage">Parking garage</label><input id="parkingGarage" type="checkbox"><br>
+    <label for="publicTransit">Public transit accessible</label><input id="publicTransit" type="checkbox"><br>
+    <label for="smoking">Smoking</label><input id="smoking" type="checkbox"><br>
 
-        <button id="createListing">Create</button>
-    </form>
-    <div id="status"></div>
+    <button id="createListing">Create</button>
+  </form>
+  <div id="status"></div>
 
-    <h3>Your listings</h3>
-    <div id="yourListings"></div>
+  <h3>Your listings</h3>
+  <div id="yourListings"></div>
 
 </body>
+
 </html>
