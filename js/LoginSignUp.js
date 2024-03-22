@@ -7,8 +7,8 @@ $(() => {
   if (localStorage.getItem("signedIn") == "true") {
     console.log("signed in")
     $("#signInStatus").html("Youre already signed in")
-    $("#signInStatus").append("<br><a href='./html/Main.html'>Go to main page</a>")
-    $("#signInStatus").append("<br><a id='signOut' href='./html/LoginPage.html'>Sign out</a>")
+    $("#signInStatus").append("<br><a href='../html/Main.html'>Go to main page</a>")
+    $("#signInStatus").append("<br><a id='signOut' href='../html/LoginPage.html'>Sign out</a>")
 
     $("#signOut").click(() => { signOut() })
 
