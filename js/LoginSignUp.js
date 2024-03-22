@@ -82,7 +82,7 @@ function signUp() {
   localStorage.setItem("userData", JSON.stringify(userData))
 
   localStorage.setItem("signedIn", "true")
-  window.location.href = "./html/Main.html"
+  window.location.href = "../html/Main.html"
 }
 
 function signIn() {
@@ -94,7 +94,7 @@ function signIn() {
   if (userData.some((user) => user.username == username && user.password == password)) {
     $("#signInStatus").html("Login successful")
     localStorage.setItem("signedIn", "true")
-    window.location.href = "./html/Main.html"
+    window.location.href = "../html/Main.html"
   } else {
     $("#signInStatus").html("Login failed")
   }
@@ -102,5 +102,5 @@ function signIn() {
 
 function signOut() {
   localStorage.setItem("signedIn", "false")
-  window.location.href = "./html/LoginPage.html"
+  window.location.href = "../html/LoginPage.html"
 }
