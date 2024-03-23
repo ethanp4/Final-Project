@@ -4,81 +4,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../css/ListingDetails.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="../js/ListingDetails.js"></script>
+
   <title>Document</title>
 </head>
 
 <body>
-  <!-- CALENDAR -->
-  <div id="calendar">
-    <h1>Property Information</h1>
-  </div>
+  <h1 id="title">Details for ${propertyName}</h1>
+  <div id="contents">
+    <table>
+      <style>
+        th {
+          text-align: left;
+        }
+      </style>
+      <tr>
+        <th>Name:</th>
+        <td id="name"></td>
+      </tr>
+      <tr>
+        <th>Address:</th>
+        <td id="address"></td>
+      </tr>
+      <tr>
+        <th>Capacity:</th>
+        <td id="capacity"></td>
+      </tr>
+      <tr>
+        <th>Description:</th>
+        <td id="description"></td>
+      </tr>
+      <tr>
+        <th>Square Ft:</th>
+        <td id="squareFt"></td>
+      </tr>
+      <tr>
+        <th>Price:</th>
+        <td id="price"></td>
+      </tr>
+      <tr>
+        <th>Parking Garage:</th>
+        <td id="parkingGarage"></td>
+      </tr>
+      <tr>
+        <th>Public Transit:</th>
+        <td id="publicTransit"></td>
+      </tr>
+      <tr>
+        <th>Smoking:</th>
+        <td id="smoking"></td>
+      </tr>
+    </table>
 
-  <!-- PROPERTY INFO-->
-  <div id="propertyInfo">
-    <h4>Property Information</h4>
-    <label for="propertyName">Property Name: </label>
-    <input type="text" placeholder="House" name="propertyName">
-
-    <label for="address">Address: </label>
-    <input type="text" placeholder="123 Address Street" name="address">
-
-    <label for="squareFt">Square ft: </label>
-    <input type="text" placeholder="sq. ft" name="squareFt">
-
-    <label for="capacity">Capacity: </label>
-    <input type="text" placeholder="123" name="capacity">
-
-    <label for="ownersDescription">Owner's Description: </label>
-    <input type="text" placeholder="Don't look in the freezer" name="ownersDescription">
-
-    <label for="rating">User Rating: </label>
-    <input type="text" placeholder="1" name="rating">
-
-    <!-- Filter -->
-    <label for="parking">Parking: </label>
-    <input type="checkbox" name="parking">
-
-    <label for="transit">Transit: </label>
-    <input type="checkbox" name="transit">
-
-    <label for="smoking">Smoking: </label>
-    <input type="checkbox" name="smoking">
-
-    <!-- Rating: embed the link of the icon  fron awesome icon library -->
-    <h5>Rate this property from 1 - 5</h5>
-    <span class="rating"></span>
-    <span class="rating"></span>
-    <span class="rating"></span>
-    <span class="rating"></span>
-    <span class="rating"></span>
-    <button type="submit">Submit</button>
-  </div>
-
-  <!-- OWNER INFO -->
-  <div id="ownerInfo">
-    <h4>Owner Information</h4>
-    <label for="name">Name: </label>
-    <input type="text" placeholder="John J Johnfield">
-
-    <label for="email">Email: </label>
-    <input type="text" placeholder="John@johnmail.john">
-
-    <label for="phoneNum">Phone Number: </label>
-    <input type="text" placeholder="555-555-5555">
-
-    <label for="userRating">User Rating: </label>
-    <input type="text" placeholder="1">
-
-    <!-- Rating -->
-    <h5>Rate this owner from 1 - 5</h5>
-    <span class="rating"></span>
-    <span class="rating"></span>
-    <span class="rating"></span>
-    <span class="rating"></span>
-    <span class="rating"></span>
-    <button type="submit">Submit</button>
-  </div>
-
+    <a href="PropertyBrowser.html">Back to List</a>
+  </div><br>
 </body>
 
 </html>

@@ -59,6 +59,7 @@ function updateListingsList() {
                 <td class="smoking">${property.smoking ? "Yes" : "No"}</td>
             </tr>
         </table>
+        <a href="ListingDetails.html?propertyName=${property.propertyName}">View Details</a>
     </div><br>
     `)
   })
