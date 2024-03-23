@@ -24,4 +24,37 @@ $(() => {
   $("#parkingGarage").text(property.parkingGarage ? "Yes" : "No")
   $("#publicTransit").text(property.publicTransit ? "Yes" : "No")
   $("#smoking").text(property.smoking ? "Yes" : "No")
+
+  $("#rating").text(property.rating / property.ratingCount)
+
+  $("#submitRating").click(() => {
+    rateProperty()
+  })
+
+  //enable and disable submit button
+  $("#userRating").change(() => {
+    if ($("#userRating").val() != "null") {
+      $("#submitRating").prop("disabled", false)
+    } else {
+      $("#submitRating").prop("disabled", true)
+    }
+  })
+
 })
+
+function rateProperty() {
+  var properties = JSON.parse(localStorage.getItem("properties"))
+  var property = properties.find((property) => property.propertyName == $("#name").text())
+  var index = properties.indexOf(property)
+
+  property.rating += parseInt($("#userRating").val())
+  property.ratingCount++
+
+  properties[index] = property
+
+  localStorage.setItem("properties", JSON.stringify(properties))
+
+  $("#status").text("Rating submitted!")
+  $("#submitRating").prop("disabled", true)
+  $("#rating").text(property.rating / property.ratingCount)
+}
