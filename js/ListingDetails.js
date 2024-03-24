@@ -11,6 +11,12 @@ $(() => {
   var propertyName = url.searchParams.get("propertyName");
   var property = properties.find((property) => property.propertyName == propertyName)
 
+  //if theres no valid property in the url bar then redirect to the browser
+  if (property == undefined) {
+    window.alert("Please select a valid property from the property browser")
+    window.location.href = "PropertyBrowser.html"
+  }
+
   //set title
   $("#title").text(`Details for ${propertyName}`)
 
