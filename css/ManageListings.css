@@ -1,0 +1,11 @@
+header {
+    text-align: center;
+}
+h3 {
+    text-align: center;
+}
+#createListing, #yourListings{
+display: flex;
+justify-content: center;
+align-items: center;
+}
