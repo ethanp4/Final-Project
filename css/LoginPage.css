@@ -1,3 +1,4 @@
+
 .container {
     display: flex;
     justify-content: center;
@@ -13,12 +14,13 @@ input,
 button {
     border-radius: 7px;
     margin: 2px 0px;
+    height: 30px
 }
 
 
 /* ------------DIV 1---------------- */
 
-/* #firstName {
+ #firstName {
   margin-right: 10px
 }
 #lastName {
@@ -57,13 +59,13 @@ select {
 
 
 
-/* .div2 {
+.div2 {
     margin: 100px 50px;
     font-size: 10px;
-} */
+} 
 
 /* --------------DIV 3----------------- */
-/* .div3 {
+.div3 {
     text-align: center;
 }
 .div3 > h3 {
@@ -90,4 +92,12 @@ select {
 
 #signUp {
     font-size: 10px;
-}  */
+}  
+
+div {
+    text-align: center;
+}
+
+#buttons {
+    text-align: center;
+}
