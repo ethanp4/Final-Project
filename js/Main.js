@@ -1,7 +1,6 @@
 $(() => {
-  var userData = JSON.parse(localStorage.getItem("userData"))
-  
+  var name = localStorage.getItem("name")
   //set welcome text
-  $("#welcome").html(`Welcome ${userData[0].firstName}`)
+  $("#welcome").html(`Welcome ${name}`)
 
 })

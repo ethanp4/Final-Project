@@ -1,8 +1,5 @@
 $(() => {
-  //initialise localstorage item to prevent errors
-  if (localStorage.getItem("properties") == null) {
-    localStorage.setItem("properties", JSON.stringify([]))
-  }
+
 
   //update list containing div
   updateListingsList()

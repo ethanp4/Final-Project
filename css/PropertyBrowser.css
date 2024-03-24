@@ -2,17 +2,13 @@
     text-align: center;
 }
 
-#filterDiv {
+#filterDiv, #propertyList {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* height: 100vh; */
 }
 
 #propertyList {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
 }
 
