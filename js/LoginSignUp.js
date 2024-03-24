@@ -30,6 +30,18 @@ $(() => {
     event.preventDefault()
     signIn()
   })
+
+  $("#exampleData").click(() => {
+    var exampleUserData = [{ username: "user", password: "pass", firstName: "John", lastName: "Doe", email: "pQWp6@example.com", phone: "123456789" }]
+    var exampleListingsData = [{ propertyName: "House", address: "123 Main St", capacity: 4, description: "A beautiful house", squareFt: 1000, price: 100, parkingGarage: true, publicTransit: false, smoking: false, rating: 0, ratingCount: 0 }, { propertyName: "Apartment", address: "456 Main St", capacity: 2, description: "A beautiful apartment", squareFt: 500, price: 50, parkingGarage: false, publicTransit: true, smoking: false, rating: 15, ratingCount: 3 }, { propertyName: "Office", address: "789 Main St", capacity: 10, description: "A beautiful office", squareFt: 2000, price: 200, parkingGarage: true, publicTransit: true, smoking: true, rating: 3, ratingCount: 1 }]
+
+    localStorage.setItem("userData", JSON.stringify(exampleUserData))
+    localStorage.setItem("properties", JSON.stringify(exampleListingsData))
+
+    $("#username").val(exampleUserData[0].username)
+    $("#password").val(exampleUserData[0].password)
+    $("#signInStatus").html("Example data loaded")
+  })
 })
 
 function checkIfUserExists(email) {
@@ -71,11 +83,11 @@ function signUp() {
   //add to array
   userData.push({
     "username": username,
+    "password": password,
     "firstName": firstName,
     "lastName": lastName,
     "email": email,
-    "phone": phone,
-    "password": password,
+    "phone": phone
   })
 
   //set local storage
