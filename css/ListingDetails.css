@@ -1,0 +1,179 @@
+body {
+    background-color: white;
+}
+
+#container {
+    display: flex;
+    margin: 0 20%;
+}
+/* input {
+    padding-left: 10px;
+} */
+/*  
+block - takes the whole space across and cannot edit width and height
+inline - takes the minimal space, can edit width and height
+inline-block - same as inline but can exist within the line as a block */
+
+/* PROPERTY INFO */
+
+#propertyInfo>label:nth-child(even) {
+    display: inline-block;
+    margin: 5px 20%;
+}
+
+#propertyInfo>input:nth-child(odd) {
+    display: inline;
+    padding: 10px 0;
+    margin: 10px -50px;
+    border-radius: 9px;
+}
+
+#propertyInfo>input:nth-child(5) {
+    margin: 10px -5px;
+}
+
+#propertyInfo>input:nth-child(7) {
+    margin: 10px -10px;
+}
+
+#propertyInfo>input:nth-child(9) {
+    margin: 10px -7px;
+    width: 170px;
+    height: 15px;
+}
+
+#propertyInfo>input:nth-child(11) {
+    margin: 10px -82px;
+    width: 170px;
+    height: 15px;
+}
+
+#propertyInfo>input:nth-child(13) {
+    margin: 10px -27px;
+    width: 50px;
+    height: 12px;
+}
+
+h4 {
+    text-align: center;
+}
+
+/* FILTER */
+
+#filter>label:nth-child(odd) {
+    display: inline;
+    margin: 5px 20%;
+}
+
+br {
+    display: hide;
+}
+
+#filter>input:nth-child(2) {
+    margin: 0 -60px;
+    margin-top: 20px;
+    /*parking*/
+}
+
+#filter>label:nth-child(5) {
+    margin-right: 38px;
+    /*transit input*/
+}
+
+#filter>label:nth-child(9) {
+    margin-right: 25px;
+    /*smoke input*/
+}
+
+/* RATING */
+.propRating>h5 {
+    font-weight: normal;
+    margin-left: 95px;
+}
+
+button {
+    position: relative;
+    left: 110px;
+}
+
+.rating {
+    position: relative;
+    left: 90px;
+    margin: 0.4rem;
+}
+
+h5+.rating {
+    text-align: center;
+}
+
+button {
+    border-radius: 12px;
+    padding: 5px 8px;
+}
+
+/* OWNER INFORMATION */
+#container2 {
+    display: flex;
+    width: 1000px;
+}
+
+#ownerInfo>label {
+
+    display: inline;
+    margin: 10px;
+
+}
+
+#ownerInfo>input {
+
+    display: inline-block;
+    height: 30px;
+    border-radius: 9px;
+    margin-bottom: 2px;
+}
+
+#ownerInfo>input:nth-child(3) {/*name rating*/
+    margin: 8px 0;
+    height: 35px;
+    border-radius: 9px;
+    margin-bottom: 20px;
+    margin-left: 80px;
+}
+
+#ownerInfo>input:nth-child(6) {/*email rating*/
+    height: 35px;
+    border-radius: 9px;
+    margin-left: 80px;
+}
+
+#ownerInfo>input:nth-child(10) {/*phone rating*/
+    height: 35px;
+    border-radius: 9px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+
+#ownerInfo>input:nth-child(13) { /*user rating*/
+    height: 35px;
+    border-radius: 9px;
+    margin-bottom: 20px;
+    width: 50px;
+    margin-left: 40px;
+}
+
+/* OWNER RATING */
+.ownerRating > h5 {
+    margin-top: 235px;
+    font-weight: normal;
+}
+
+.ownerRating > .rating{
+    position: relative;
+    left: -5px;
+    margin: 0.4rem;
+}
+
+.ownerRating > button {
+    position: relative;
+    left: -5px;
+}
