@@ -1,9 +1,13 @@
 $(() => {
-  //initialise localstorage item to prevent errors
+  //initialise localstorage items if they dont exist to avoid errors
   if (localStorage.getItem("userData") == null) {
     localStorage.setItem("userData", JSON.stringify([]))
   }
+  if (localStorage.getItem("properties") == null) {
+    localStorage.setItem("properties", JSON.stringify([]))
+  }
 
+  //if the user is already signed in, if the item isnt initialised it evaluates as false
   if (localStorage.getItem("signedIn") == "true") {
     console.log("signed in")
     $("#signInStatus").html("Youre already signed in")
@@ -14,12 +18,10 @@ $(() => {
 
     $("input").prop("disabled", true)
     $("button").prop("disabled", true)
+
+    //because i disabled all buttons this re-enables this one
     $("#clearLocalstorage").prop("disabled", false)
   }
-
-  var userData = JSON.parse(localStorage.getItem("userData"))
-
-  console.log(userData)
 
   $("#signUp").submit((event) => {
     event.preventDefault()
@@ -44,12 +46,8 @@ $(() => {
   })
 })
 
-function checkIfUserExists(email) {
+function checkIfUserExists(username) {
   var userData = JSON.parse(localStorage.getItem("userData"))
-
-  if (userData == null) {
-    return false
-  }
 
   if (userData.some((user) => user.username == username)) {
     return true
@@ -82,6 +80,7 @@ function signUp() {
 
   //add to array
   userData.push({
+    "id": userData.length + 1,
     "username": username,
     "password": password,
     "firstName": firstName,
@@ -92,8 +91,10 @@ function signUp() {
 
   //set local storage
   localStorage.setItem("userData", JSON.stringify(userData))
-
   localStorage.setItem("signedIn", "true")
+
+  localStorage.setItem("name", `${firstName} ${lastName}`)
+
   window.location.href = "Main.html"
 }
 
@@ -106,6 +107,11 @@ function signIn() {
   if (userData.some((user) => user.username == username && user.password == password)) {
     $("#signInStatus").html("Login successful")
     localStorage.setItem("signedIn", "true")
+
+    var user = userData.find((user) => user.username == username)
+
+    localStorage.setItem("name", `${user.firstName} ${user.lastName}`)
+
     window.location.href = "Main.html"
   } else {
     $("#signInStatus").html("Login failed")

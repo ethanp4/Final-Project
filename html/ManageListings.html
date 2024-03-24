@@ -11,18 +11,55 @@
 </head>
 
 <body>
+  <header>
+    <a href="LoginPage.html">Login/Sign up</a>
+    <a href="Main.html">Home</a>
+    <a href="PropertyBrowser.html">Listings</a>
+    <a href="ManageListings.html">Manage listings</a>
+  </header>
+
   <h3>List a property</h3>
   <form id="createListing">
 
-    <input required id="propertyName" placeholder="Property Name"><br>
-    <input required id="address" placeholder="Address"><br>
-    <input required id="capacity" placeholder="Capacity" type="number"><br>
-    <input required id="description" placeholder="Description"><br>
-    <input required id="squareFt" placeholder="Square Feet" min="0" type="number"><br>
-    <input required id="price" placeholder="Price" min="0" type="number"><br>
-    <label for="parkingGarage">Parking garage</label><input id="parkingGarage" type="checkbox"><br>
-    <label for="publicTransit">Public transit accessible</label><input id="publicTransit" type="checkbox"><br>
-    <label for="smoking">Smoking</label><input id="smoking" type="checkbox"><br>
+    <table>
+      <tr>
+        <td><label for="propertyName">Property Name</label></td>
+        <td><input required id="propertyName" placeholder="Beautiful Warehouse"></td>
+      </tr>
+      <tr>
+        <td><label for="address">Address</label></td>
+        <td><input required id="address" placeholder="773 Xyz St."></td>
+      </tr>
+      <tr>
+        <td><label for="capacity">Capacity</label></td>
+        <td><input required id="capacity" placeholder="300" type="number"></td>
+      </tr>
+      <tr>
+        <td><label for="description">Description</label></td>
+        <td><input required id="description" placeholder="A Beautiful Warehouse"></td>
+      </tr>
+      <tr>
+        <td><label for="squareFt">Square Ft</label></td>
+        <td><input required id="squareFt" placeholder="4000" min="0" type="number"></td>
+      </tr>
+      <tr>
+        <td><label for="price">Price</label></td>
+        <td><input required id="price" placeholder="400" min="0" type="number"></td>
+      </tr>
+      <tr>
+        <td><label for="parkingGarage">Parking garage</label></td>
+        <td><input id="parkingGarage" type="checkbox"></td>
+      </tr>
+      <tr>
+        <td><label for="publicTransit">Public transit accessible</label></td>
+        <td><input id="publicTransit" type="checkbox"></td>
+      </tr>
+      <tr>
+        <td><label for="smoking">Smoking</label></td>
+        <td><input id="smoking" type="checkbox"></td>
+      </tr>
+    </table>
+
 
     <button id="createListing">Create</button>
   </form>
