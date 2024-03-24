@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  <link rel="stylesheet" href="../css/global.css">
   <link rel="stylesheet" href="/css/PropertyBrowser.css">
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"
     integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -11,51 +12,56 @@
 </head>
 
 <body>
-  <h1>Property browser</h1>
-  <div id="loginSignup" style="float:right;">
-    <button id="loginBtn">Login</button><br>
-    <button id="signUpBtn">Sign up</button>
+  <h1 id="header">Property browser</h1>
+  <!-- gonna make a header for the stuff later -->
+
+  <div id="filterDiv">
+    <table>
+      <tr>
+        <td><label for="filter">Searching for</label></td>
+        <td><input id="filter" type="text"></td>
+        <td><label for="sort">in</label></td>
+        <td><select id="sort">
+            <option>Name</option>
+            <option>Address</option>
+            <option>Description</option>
+          </select>
+        </td>
+        <td><button class="resetAll">Reset all</button><br></td>
+      </tr>
+      <tr>
+        <td><label for="capacityFrom">Capacity range</label></td>
+        <td><input id="capacityFrom" type="number"></td>
+        <td><label for="capacityTo">to</label></td>
+        <td><input id="capacityTo" type="number"></td>
+        <td><button>Reset</button></td>
+      </tr>
+      <tr>
+        <td><label for="squareFtFrom">Square ft range</label></td>
+        <td><input id="squareFtFrom" type="number"></td>
+        <td><label for="squareFtTo">to</label></td>
+        <td><input id="squareFtTo" type="number"></td>
+        <td><button>Reset</button></td>
+      </tr>
+      <tr>
+        <td><label for="parkingGarage">Parking garage</label></td>
+        <td colspan="3"><input id="parkingGarage" type="checkbox"></td>
+        <td><button>Reset</button></td>
+      </tr>
+      <tr>
+        <td><label for="publicTransit">Public transit</label></td>
+        <td colspan="3"><input id="publicTransit" type="checkbox"></td>
+        <td><button>Reset</button></td>
+      </tr>
+      <tr>
+        <td><label for="smoking">Smoking</label></td>
+        <td colspan="3"><input id="smoking" type="checkbox"></td>
+        <td><button>Reset</button></td>
+      </tr>
+    </table>
   </div>
 
-  <div id="divSearchQuery">
-    <input placeholder="Search query">
-    <label for="sort">Sort by</label>
-    <select id="sort">
-      <option>Dropdown</option>
-    </select>
-  </div>
-
-  <div id="container">
-    <div id="div1">
-      <button class="resetAll">Reset all</button><br>
-      <label for="capacityFrom">Capacity range</label>
-      <input id="capacityFrom" type="number">
-      <label for="capacityTo"> to</label>
-      <input id="capacityTo" type="number">
-      <button>Reset</button><br>
-    </div>
-
-    <div id="div2">
-      <label for="squareFtFrom">Square ft range</label>
-      <input id="squareFtFrom" type="number">
-      <label for="squareFtTo"> to</label>
-      <input id="squareFtTo" type="number">
-      <button>Reset</button><br>
-    </div>
-
-    <div id="div3">
-      <label for="parkingGarage">Parking garage</label>
-      <input id="parkingGarage" type="checkbox">
-      <button>Reset</button>
-      <br>
-      <label for="publicTransit">Public transit accessible</label>
-      <input id="publicTransit" type="checkbox">
-      <button>Reset</button><br>
-      <label for="smoking">Smoking</label>
-      <input id="smoking" type="checkbox">
-      <button>Reset</button><br>
-    </div>
-  </div>
+  <br>
   <div id="propertyList"></div>
 </body>
 

@@ -25,7 +25,8 @@ $(() => {
   $("#publicTransit").text(property.publicTransit ? "Yes" : "No")
   $("#smoking").text(property.smoking ? "Yes" : "No")
 
-  $("#rating").text(property.rating / property.ratingCount)
+  console.log(property.rating)
+  $("#rating").text(property.rating == 0 ? "No ratings yet" : `${(property.rating / property.ratingCount).toFixed(1)}/5`)
 
   $("#submitRating").click(() => {
     rateProperty()
@@ -50,11 +51,9 @@ function rateProperty() {
   property.rating += parseInt($("#userRating").val())
   property.ratingCount++
 
-  properties[index] = property
-
   localStorage.setItem("properties", JSON.stringify(properties))
 
   $("#status").text("Rating submitted!")
   $("#submitRating").prop("disabled", true)
-  $("#rating").text(property.rating / property.ratingCount)
+  $("#rating").text((property.rating / property.ratingCount).toFixed(1) + "/5")
 }

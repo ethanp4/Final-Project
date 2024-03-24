@@ -1,25 +1,25 @@
 $(() => {
-  //initialise localstorage item to prevent errors
-  if (localStorage.getItem("properties") == null) {
-    localStorage.setItem("properties", JSON.stringify([]))
-  }
+    //initialise localstorage item to prevent errors
+    if (localStorage.getItem("properties") == null) {
+        localStorage.setItem("properties", JSON.stringify([]))
+    }
 
-  //update list containing div
-  updateListingsList()
+    //update list containing div
+    updateListingsList()
 
 })
 
 function updateListingsList() {
-  //retrieve data from localstorage
-  var properties = JSON.parse(localStorage.getItem("properties"))
+    //retrieve data from localstorage
+    var properties = JSON.parse(localStorage.getItem("properties"))
 
-  //clear div
-  $("#propertyList").html("")
+    //clear div
+    $("#propertyList").html("")
 
-  //add data to list
-  properties.forEach(property => {
-    $("#propertyList").append(`
-    <div id="${property.propertyName}">
+    //add data to list
+    properties.forEach(property => {
+        $("#propertyList").append(`
+    <div class="property" id="${property.propertyName}">
         <table>
         <style>th {text-align: left;}</style>
             <tr>
@@ -58,9 +58,27 @@ function updateListingsList() {
                 <th><label for="newSmoking" class="smokingLabel">Smoking:</label></th>
                 <td class="smoking">${property.smoking ? "Yes" : "No"}</td>
             </tr>
+            <tr>
+            <td><a href="ListingDetails.html?propertyName=${property.propertyName}">View Details</a></td>
+            </tr>
         </table>
-        <a href="ListingDetails.html?propertyName=${property.propertyName}">View Details</a>
     </div><br>
     `)
-  })
+    })
+
+    setWidths()
+}
+
+function setWidths() {
+    let maxWidth = 0
+
+    $(".property").each(function () {
+        if ($(this).width() > maxWidth) {
+            maxWidth = $(this).width()
+        }
+    })
+
+    console.log(`Max width: ${maxWidth}`)
+    $(".property").css("width", maxWidth)
+
 }

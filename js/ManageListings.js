@@ -1,5 +1,4 @@
 $(() => {
-
   //initialise localstorage item to prevent errors
   if (localStorage.getItem("properties") == null) {
     localStorage.setItem("properties", JSON.stringify([]))
@@ -15,14 +14,11 @@ $(() => {
   })
 
   $(document).on("click", ".delete", (event) => {
-    event.preventDefault()
-
     //call the delete function with the property name as parameter
     deleteListing(event.target.value)
   })
 
   $(document).on("click", ".edit", (event) => {
-    event.preventDefault()
     editListing(event.target.value)
   })
 })
@@ -120,20 +116,34 @@ function editListing(propertyName) {
 
   //set event listener for the save button
   $(`#${propertyName} .save`).click(() => {
-    //create new var for new property
-    var newProperty = {
-      propertyName: $(`#${propertyName} #newName`).val(),
-      address: $(`#${propertyName} #newAddress`).val(),
-      capacity: $(`#${propertyName} #newCapacity`).val(),
-      description: $(`#${propertyName} #newDescription`).val(),
-      squareFt: $(`#${propertyName} #newSquareFt`).val(),
-      price: $(`#${propertyName} #newPrice`).val(),
-      parkingGarage: $(`#${propertyName} #newParkingGarage`).prop("checked"),
-      publicTransit: $(`#${propertyName} #newPublicTransit`).prop("checked"),
-      smoking: $(`#${propertyName} #newSmoking`).prop("checked")
-    }
 
-    properties[index] = newProperty
+    // //create new var for new property
+    // var newProperty = {
+    //   propertyName: $(`#${propertyName} #newName`).val(),
+    //   address: $(`#${propertyName} #newAddress`).val(),
+    //   capacity: $(`#${propertyName} #newCapacity`).val(),
+    //   description: $(`#${propertyName} #newDescription`).val(),
+    //   squareFt: $(`#${propertyName} #newSquareFt`).val(),
+    //   price: $(`#${propertyName} #newPrice`).val(),
+    //   parkingGarage: $(`#${propertyName} #newParkingGarage`).prop("checked"),
+    //   publicTransit: $(`#${propertyName} #newPublicTransit`).prop("checked"),
+    //   smoking: $(`#${propertyName} #newSmoking`).prop("checked")
+    // }
+
+    //modify property object
+    property.propertyName = $(`#${propertyName} #newName`).val()
+    property.address = $(`#${propertyName} #newAddress`).val()
+    property.capacity = $(`#${propertyName} #newCapacity`).val()
+    property.description = $(`#${propertyName} #newDescription`).val()
+    property.squareFt = $(`#${propertyName} #newSquareFt`).val()
+    property.price = $(`#${propertyName} #newPrice`).val()
+    property.parkingGarage = $(`#${propertyName} #newParkingGarage`).prop("checked")
+    property.publicTransit = $(`#${propertyName} #newPublicTransit`).prop("checked")
+    property.smoking = $(`#${propertyName} #newSmoking`).prop("checked")
+
+    // properties[index] = newProperty
+
+    //update the local storage item
     localStorage.setItem("properties", JSON.stringify(properties))
     updateListingsList()
   })
@@ -166,7 +176,9 @@ function createListing() {
     "price": price,
     "parkingGarage": parkingGarage,
     "publicTransit": publicTransit,
-    "smoking": smoking
+    "smoking": smoking,
+    "rating": 0,
+    "ratingCount": 0
   })
 
   //set data in local storage for consistency until we use nodejs
