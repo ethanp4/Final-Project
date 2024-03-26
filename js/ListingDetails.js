@@ -52,7 +52,6 @@ $(() => {
 function rateProperty() {
   var properties = JSON.parse(localStorage.getItem("properties"))
   var property = properties.find((property) => property.propertyName == $("#name").text())
-  var index = properties.indexOf(property)
 
   property.rating += parseInt($("#userRating").val())
   property.ratingCount++
