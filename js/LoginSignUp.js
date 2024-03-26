@@ -125,8 +125,16 @@ function signIn() {
     localStorage.setItem("type", user.type)
     localStorage.setItem("name", `${user.firstName} ${user.lastName}`)
 
-    window.location.href = "Main.html"
-  } else {
+    switch (user.type) {
+      case "renter":
+        window.location.href = "PropertyBrowser.html"
+        break
+      case "owner":
+        window.location.href = "ManageListings.html"
+        break
+    }
+  }
+  else {
     $("#signInStatus").html("Login failed")
   }
 }

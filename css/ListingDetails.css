@@ -1,12 +1,16 @@
-/* color buttons */
-button {
-    background-color: #0000ff;
-    color: rgb(255, 255, 255);
+table {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-/* round button corners */
-button,
-select {
-    border-radius: 5px;
-    height: 20px
+#rateThisProperty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#status {
+    text-align: center;
 }

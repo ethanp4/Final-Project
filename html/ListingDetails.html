@@ -15,7 +15,9 @@
 
 <body>
   <header>
+    <a href="PropertyBrowser.html">Back to List</a>
   </header>
+
 
   <h1 id="title">Details for ${propertyName}</h1>
   <div id="contents">
@@ -65,24 +67,26 @@
         <th>Rating:</th>
         <td id="rating"></td>
       </tr>
+      <tr>
+        <th>Rating Count:</th>
+        <td id="ratingCount"></td>
+      </tr>
     </table>
-
-    <label>Rate this property</label>
-    <select id="userRating">
-      <option value="null">Select a rating</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-    </select>
-    <button disabled id="submitRating">Submit rating</button>
+    <br>
+    <div id="rateThisProperty">
+      <select id="userRating">
+        <option value="null">Select a rating</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <button disabled id="submitRating">Submit rating</button>
+    </div>
     <br>
     <div id="status"></div>
-    <br>
-
-    <a href="PropertyBrowser.html">Back to List</a>
-  </div><br>
+  </div>
 </body>
 
 </html>

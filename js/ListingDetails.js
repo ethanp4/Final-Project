@@ -32,6 +32,7 @@ $(() => {
   $("#smoking").text(property.smoking ? "Yes" : "No")
 
   $("#rating").text(property.rating == 0 ? "No ratings yet" : `${(property.rating / property.ratingCount).toFixed(1)}/5`)
+  $("#ratingCount").text(property.ratingCount == 0 ? "No ratings yet" : `${property.ratingCount}`)
 
   $("#submitRating").click(() => {
     rateProperty()
@@ -61,4 +62,5 @@ function rateProperty() {
   $("#status").text("Rating submitted!")
   $("#submitRating").prop("disabled", true)
   $("#rating").text((property.rating / property.ratingCount).toFixed(1) + "/5")
+  $("#ratingCount").text(property.ratingCount)
 }

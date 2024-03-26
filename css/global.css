@@ -31,10 +31,10 @@ a:hover {
   color: rgb(78, 78, 78);
 }
 
-#currentPage {
-  background-color: rgb(1, 247, 255);
-}
-
 #currentPage:hover {
   color: rgb(78, 78, 78);
+}
+
+.currentPage {
+  background-color: rgb(1, 247, 255) !important;
 }
