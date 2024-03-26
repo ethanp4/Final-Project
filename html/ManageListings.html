@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="../css/ManageListings.css">
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"
     integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="../js/global.js"></script>
   <script src="../js/ManageListings.js"></script>
 
   <title>Your Listings</title>
@@ -13,14 +14,10 @@
 
 <body>
   <header>
-    <a href="LoginPage.html">Login/Sign up</a>
-    <a href="Main.html">Home</a>
-    <a href="PropertyBrowser.html">Listings</a>
-    <a href="ManageListings.html">Manage listings</a>
   </header>
 
   <!-- LIST A PROPERTY -->
-  <h3>List a property</h3>
+  <h1>List a property</h1>
   <form id="createListing">
 
     <table>
@@ -60,10 +57,15 @@
         <td><label for="smoking">Smoking</label></td>
         <td><input id="smoking" type="checkbox"></td>
       </tr>
+
+      <tr>
+        <td colspan="2">
+          <button id="createListing">Create Listing</button>
+        </td>
+      </tr>
     </table>
 
 
-    <button id="createListing">Create</button>
   </form>
 
   <!-- YOUR LISTINGS -->

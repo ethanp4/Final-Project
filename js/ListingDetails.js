@@ -13,7 +13,7 @@ $(() => {
 
   //if theres no valid property in the url bar then redirect to the browser
   if (property == undefined) {
-    window.alert("Please select a valid property from the property browser")
+    // window.alert("Please select a valid property from the property browser")
     window.location.href = "PropertyBrowser.html"
   }
 
@@ -31,7 +31,6 @@ $(() => {
   $("#publicTransit").text(property.publicTransit ? "Yes" : "No")
   $("#smoking").text(property.smoking ? "Yes" : "No")
 
-  console.log(property.rating)
   $("#rating").text(property.rating == 0 ? "No ratings yet" : `${(property.rating / property.ratingCount).toFixed(1)}/5`)
 
   $("#submitRating").click(() => {

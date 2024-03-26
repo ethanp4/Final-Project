@@ -1,8 +1,5 @@
-#header {
-    text-align: center;
-}
-
-#filterDiv, #propertyList {
+#filterDiv,
+#propertyList {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,110 +9,9 @@
     flex-direction: column;
 }
 
-.property {}
-
-
-/* h1 {
-    text-align: center;
-}
-
-div > button {
-    padding: 5px 30px;
-    margin: 5px 0;
-    border-radius: 15px;
-    cursor: pointer;
-    background-color: black;
-    color: white;
-} */
-
-/* 
-button:nth-child(1) {
-    /* padding-right: 20px; 
-    background-color: black;
-    color: rgb(255, 255, 255);;
-    text-align: center;
-    display: inline-block;
-} */
-
-
-/* 
-button:nth-child(2) {
-    background-color: white;
-}
-label:nth-child() {
-    text-align: center;
-} */
-
-/* DIV 1 */
-/* #divSearchQuery {
+#resetParking,
+#resetTransit,
+#resetSmoking {
     position: relative;
-    left: 550px;
+    bottom: 5px;
 }
-
-#divSearchQuery > input:nth-child(1) {
-    padding-right: 320px;
-    margin-right: 50px;
-    border-radius: 8px;
-    height: 30px;
-}
-
-
-#container {
-    text-align: center;
-    margin: 0 30%;
-} */
-
-/* DIV 3 */
-
-/* #div3 button{
-margin-left: 300px;
-} */
-
-/* .resetAll {
-    height: 30px;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-left: 280px;
-    text-align: center;
-}
-
-#div > label:nth-child(1) {
-    margin: 90px;
-}
-
-#div3 > label:nth-last-of-type(2n) {
-    margin-right: 55px;
-}
-#div3 > label:nth-last-of-type(3n) {
-    margin-right: 110px;
-}
-
-#div3 > label:nth-last-child(4) {
-    margin-right: 150px;
-}
-
-input {
-    width: 50px;
-    margin: 10px;
-}
-
-#sort {
-    border-radius: 8px;
-    height: 40px;
-    margin-left: 5px;
-}
-#loginSignup {
-    position: relative;
-    right: 20px;
-}
-
-#loginBtn {
-    padding-right: 45px;
-    background-color: #0000ff;
-}
-#signUpBtn {
-    padding-left: 30px;
-    background-color: white;
-    color: black;
-    text-align: center;
-} */

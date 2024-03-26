@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="/css/PropertyBrowser.css">
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"
     integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="../js/global.js"></script>
   <script src="../js/PropertyBrowser.js"></script>
 
   <title>View Listings</title>
@@ -13,56 +14,52 @@
 
 <body>
   <header>
-    <a href="LoginPage.html">Login/Sign up</a>
-    <a href="Main.html">Home</a>
-    <a href="PropertyBrowser.html">Listings</a>
-    <a href="ManageListings.html">Manage listings</a>
   </header>
 
-  <h1 id="header">Property browser</h1>
+  <h1 class="header">Property browser</h1>
 
   <div id="filterDiv">
     <table>
       <tr>
         <td><label for="filter">Searching for</label></td>
         <td><input id="filter" type="text"></td>
-        <td><label for="sort">in</label></td>
-        <td><select id="sort">
+        <td><label for="filterBy">in</label></td>
+        <td><select id="filterBy">
             <option>Name</option>
             <option>Address</option>
             <option>Description</option>
           </select>
         </td>
-        <td><button class="resetAll">Reset all</button><br></td>
+        <td><button class="reset" value="all">Reset all</button><br></td>
       </tr>
       <tr>
         <td><label for="capacityFrom">Capacity range</label></td>
         <td><input id="capacityFrom" type="number"></td>
         <td><label for="capacityTo">to</label></td>
         <td><input id="capacityTo" type="number"></td>
-        <td><button>Reset</button></td>
+        <td><button class="reset" value="capacity">Reset</button></td>
       </tr>
       <tr>
         <td><label for="squareFtFrom">Square ft range</label></td>
         <td><input id="squareFtFrom" type="number"></td>
         <td><label for="squareFtTo">to</label></td>
         <td><input id="squareFtTo" type="number"></td>
-        <td><button>Reset</button></td>
+        <td><button class="reset" value="squareFt">Reset</button></td>
       </tr>
       <tr>
         <td><label for="parkingGarage">Parking garage</label></td>
-        <td colspan="3"><input id="parkingGarage" type="checkbox"></td>
-        <td><button>Reset</button></td>
+        <td colspan="3"><input id="parkingGarage" type="checkbox">&nbsp&nbsp<button id="resetParking" class="reset"
+            value="parkingGarage">Reset</button></td>
       </tr>
       <tr>
         <td><label for="publicTransit">Public transit</label></td>
-        <td colspan="3"><input id="publicTransit" type="checkbox"></td>
-        <td><button>Reset</button></td>
+        <td colspan="3"><input id="publicTransit" type="checkbox">&nbsp&nbsp<button id="resetTransit" class="reset"
+            value="publicTransit">Reset</button></td>
       </tr>
       <tr>
         <td><label for="smoking">Smoking</label></td>
-        <td colspan="3"><input id="smoking" type="checkbox"></td>
-        <td><button>Reset</button></td>
+        <td colspan="3"><input id="smoking" type="checkbox">&nbsp&nbsp<button id="resetSmoking" class="reset"
+            value="smoking">Reset</button></td>
       </tr>
     </table>
   </div>

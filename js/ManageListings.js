@@ -1,6 +1,4 @@
 $(() => {
-
-
   //update list containing div
   updateListingsList()
 
@@ -30,51 +28,53 @@ function updateListingsList() {
   //add data to list
   properties.forEach(property => {
     $("#yourListings").append(`
-        <div id="${property.propertyName}">
-            <table>
-            <style>th {text-align: left;}</style>
-                <tr>
-                    <th>Name:</th>
-                    <td class="name">${property.propertyName}</td>
-                </tr>
-                <tr>
-                    <th>Address:</th>
-                    <td class="address">${property.address}</td>
-                </tr>
-                <tr>
-                    <th>Capacity:</th>
-                    <td class="capacity">${property.capacity}</td>
-                </tr>
-                <tr>
-                    <th>Description:</th>
-                    <td class="description">${property.description}</td>
-                </tr>
-                <tr>
-                    <th>Square Ft:</th>
-                    <td class="squareFt">${property.squareFt}</td>
-                </tr>
-                <tr>
-                    <th>Price:</th>
-                    <td class="price">${property.price}</td>
-                </tr>
-                <tr>
-                    <th><label for="newParkingGarage" class="parkingGarageLabel">Parking Garage:</label></th>
-                    <td class="parkingGarage">${property.parkingGarage ? "Yes" : "No"}</td>
-                </tr>
-                <tr>
-                    <th><label for="newPublicTransit" class="publicTransitLabel">Public Transit:</label></th>
-                    <td class="publicTransit">${property.publicTransit ? "Yes" : "No"}</td>
-                </tr>
-                <tr>
-                    <th><label for="newSmoking" class="smokingLabel">Smoking:</label></th>
-                    <td class="smoking">${property.smoking ? "Yes" : "No"}</td>
-                </tr>
-            </table>
-            <button class="delete" value="${property.propertyName}">Delete</button>
-            <button class="edit" value="${property.propertyName}">Edit</button><br><br>
+        <div class="property" id="${property.propertyName}">
+          <table>
+          <style>th {text-align: left;}</style>
+            <tr>
+              <th>Name:</th>
+              <td class="name">${property.propertyName}</td>
+            </tr>
+            <tr>
+              <th>Address:</th>
+              <td class="address">${property.address}</td>
+            </tr>
+            <tr>
+              <th>Capacity:</th>
+              <td class="capacity">${property.capacity}</td>
+            </tr>
+            <tr>
+              <th>Description:</th>
+              <td class="description">${property.description}</td>
+            </tr>
+            <tr>
+              <th>Square Ft:</th>
+              <td class="squareFt">${property.squareFt}</td>
+            </tr>
+            <tr>
+              <th>Price:</th>
+              <td class="price">${property.price}</td>
+            </tr>
+            <tr>
+              <th><label for="newParkingGarage" class="parkingGarageLabel">Parking Garage:</label></th>
+              <td class="parkingGarage">${property.parkingGarage ? "Yes" : "No"}</td>
+            </tr>
+            <tr>
+              <th><label for="newPublicTransit" class="publicTransitLabel">Public Transit:</label></th>
+              <td class="publicTransit">${property.publicTransit ? "Yes" : "No"}</td>
+            </tr>
+            <tr>
+              <th><label for="newSmoking" class="smokingLabel">Smoking:</label></th>
+              <td class="smoking">${property.smoking ? "Yes" : "No"}</td>
+            </tr>
+          </table>
+          <button class="delete" value="${property.propertyName}">Delete</button>
+          <button class="edit" value="${property.propertyName}">Edit</button><br><br>
         </div>
         `)
   });
+
+  setWidths()
 }
 
 function deleteListing(propertyName) {
@@ -113,20 +113,6 @@ function editListing(propertyName) {
 
   //set event listener for the save button
   $(`#${propertyName} .save`).click(() => {
-
-    // //create new var for new property
-    // var newProperty = {
-    //   propertyName: $(`#${propertyName} #newName`).val(),
-    //   address: $(`#${propertyName} #newAddress`).val(),
-    //   capacity: $(`#${propertyName} #newCapacity`).val(),
-    //   description: $(`#${propertyName} #newDescription`).val(),
-    //   squareFt: $(`#${propertyName} #newSquareFt`).val(),
-    //   price: $(`#${propertyName} #newPrice`).val(),
-    //   parkingGarage: $(`#${propertyName} #newParkingGarage`).prop("checked"),
-    //   publicTransit: $(`#${propertyName} #newPublicTransit`).prop("checked"),
-    //   smoking: $(`#${propertyName} #newSmoking`).prop("checked")
-    // }
-
     //modify property object
     property.propertyName = $(`#${propertyName} #newName`).val()
     property.address = $(`#${propertyName} #newAddress`).val()
@@ -208,4 +194,19 @@ function checkIfListingExists(name) {
     return true
   }
   return false
+}
+
+//set the width of each property to the widest one so they align properly
+function setWidths() {
+  let maxWidth = 0
+
+  $(".property").each(function () {
+    if ($(this).width() > maxWidth) {
+      maxWidth = $(this).width()
+    }
+  })
+
+  // console.log(`Max width: ${maxWidth}`)
+  $(".property").css("width", maxWidth)
+
 }
