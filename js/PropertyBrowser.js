@@ -6,7 +6,7 @@ $(() => {
 
   updateListingsList()
 
-  $("input").on("input", (event) => {
+  $("input, select").on("input", (event) => {
     //if the filter is empty its label will be normal
     if ((event.target.type == "number" || event.target.type == "text") && event.target.value == "") {
       $(`label[for=${event.target.id}]`).css("font-weight", "normal")

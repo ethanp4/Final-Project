@@ -99,6 +99,8 @@ function signUp() {
   localStorage.setItem("type", type)
   localStorage.setItem("name", `${firstName} ${lastName}`)
 
+  localStorage.setItem("username", username)
+
   switch (type) {
     case "renter":
       window.location.href = "PropertyBrowser.html"
@@ -124,6 +126,8 @@ function signIn() {
     console.log(user.type)
     localStorage.setItem("type", user.type)
     localStorage.setItem("name", `${user.firstName} ${user.lastName}`)
+
+    localStorage.setItem("username", username)
 
     switch (user.type) {
       case "renter":
@@ -166,72 +170,121 @@ function loadExampleData() {
       email: "hds892h@example.com",
       phone: "5555555555"
     }]
-  var exampleListingsData = [{ propertyName: "House", address: "123 Main St", capacity: 4, description: "A beautiful house", squareFt: 1000, price: 100, parkingGarage: true, publicTransit: false, smoking: false, rating: 0, ratingCount: 0 }, { propertyName: "Apartment", address: "456 Main St", capacity: 2, description: "A beautiful apartment", squareFt: 500, price: 50, parkingGarage: false, publicTransit: true, smoking: false, rating: 15, ratingCount: 3 }, { propertyName: "Office", address: "789 Main St", capacity: 10, description: "A beautiful office", squareFt: 2000, price: 200, parkingGarage: true, publicTransit: true, smoking: true, rating: 3, ratingCount: 1 },
-  {
-    propertyName: "Cottage",
-    address: "987 Main St",
-    capacity: 3,
-    description: "A beautiful cottage",
-    squareFt: 1200,
-    price: 150,
-    parkingGarage: false,
-    publicTransit: false,
-    smoking: false,
-    rating: 0,
-    ratingCount: 0
-  },
-  {
-    propertyName: "Cabin",
-    address: "654 Main St",
-    capacity: 5,
-    description: "A beautiful cabin",
-    squareFt: 1500,
-    price: 250,
-    parkingGarage: true,
-    publicTransit: true,
-    smoking: true,
-    rating: 0,
-    ratingCount: 0
-  },
-  {
-    propertyName: "Villa",
-    address: "321 Main St",
-    capacity: 7,
-    description: "A beautiful villa",
-    squareFt: 3000,
-    price: 300,
-    parkingGarage: true,
-    publicTransit: true,
-    smoking: true,
-    rating: 0,
-    ratingCount: 0
-  },
-  {
-    propertyName: "Chalet",
-    address: "123 Main St",
-    capacity: 8,
-    description: "A beautiful chalet",
-    squareFt: 4000,
-    price: 400,
-    parkingGarage: true,
-    publicTransit: true,
-    smoking: true,
-    rating: 0,
-    ratingCount: 0
-  },
-  {
-    propertyName: "Cottage",
-    address: "123 Main St",
-    capacity: 3,
-    description: "A beautiful cottage",
-    squareFt: 1200,
-    price: 150,
-    parkingGarage: false,
-    publicTransit: false,
-    smoking: false,
-    rating: 0,
-    ratingCount: 0
-  }]
+
+  var exampleListingsData = [
+    {
+      owner: "owner",
+      propertyName: "House",
+      address: "123 Main St",
+      capacity: 4,
+      description: "A beautiful house",
+      squareFt: 1000,
+      price: 100,
+      parkingGarage: true,
+      publicTransit: false,
+      smoking: false,
+      rating: 0,
+      ratingCount: 0
+    },
+    {
+      owner: "owner2",
+      propertyName: "Apartment",
+      address: "456 Main St",
+      capacity: 2,
+      description: "A beautiful apartment",
+      squareFt: 500,
+      price: 50,
+      parkingGarage: false,
+      publicTransit: true,
+      smoking: false,
+      rating: 15,
+      ratingCount: 3
+    },
+    {
+      owner: "owner2",
+      propertyName: "Office",
+      address: "789 Main St",
+      capacity: 10,
+      description: "A beautiful office",
+      squareFt: 2000,
+      price: 200,
+      parkingGarage: true,
+      publicTransit: true,
+      smoking: true,
+      rating: 3,
+      ratingCount: 1
+    },
+    {
+      owner: "owner",
+      propertyName: "Cottage",
+      address: "987 Main St",
+      capacity: 3,
+      description: "A beautiful cottage",
+      squareFt: 1200,
+      price: 150,
+      parkingGarage: false,
+      publicTransit: false,
+      smoking: false,
+      rating: 0,
+      ratingCount: 0
+    },
+    {
+      owner: "owner2",
+      propertyName: "Cabin",
+      address: "654 Main St",
+      capacity: 5,
+      description: "A beautiful cabin",
+      squareFt: 1500,
+      price: 250,
+      parkingGarage: true,
+      publicTransit: true,
+      smoking: true,
+      rating: 0,
+      ratingCount: 0
+    },
+    {
+      owner: "owner2",
+      propertyName: "Villa",
+      address: "321 Main St",
+      capacity: 7,
+      description: "A beautiful villa",
+      squareFt: 3000,
+      price: 300,
+      parkingGarage: true,
+      publicTransit: true,
+      smoking: true,
+      rating: 0,
+      ratingCount: 0
+    },
+    {
+      owner: "owner2",
+      propertyName: "Chalet",
+      address: "123 Main St",
+      capacity: 8,
+      description: "A beautiful chalet",
+      squareFt: 4000,
+      price: 400,
+      parkingGarage: true,
+      publicTransit: true,
+      smoking: true,
+      rating: 0,
+      ratingCount: 0
+    },
+    {
+      owner: "owner",
+      propertyName: "Cottage",
+      address: "123 Main St",
+      capacity: 3,
+      description: "A beautiful cottage",
+      squareFt: 1200,
+      price: 150,
+      parkingGarage: false,
+      publicTransit: false,
+      smoking: false,
+      rating: 0,
+      ratingCount: 0
+    }
+  ]
 
   localStorage.setItem("userData", JSON.stringify(exampleUserData))
   localStorage.setItem("properties", JSON.stringify(exampleListingsData))

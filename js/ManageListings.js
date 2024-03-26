@@ -25,6 +25,8 @@ function updateListingsList() {
   //clear div
   $("#yourListings").html("")
 
+  properties = properties.filter(property => property.owner == localStorage.getItem("username"))
+
   //add data to list
   properties.forEach(property => {
     $("#yourListings").append(`
@@ -151,6 +153,7 @@ function createListing() {
 
   //add data to beginning of array
   properties.unshift({
+    "owner": localStorage.getItem("username"),
     "propertyName": propertyName,
     "address": address,
     "capacity": capacity,
