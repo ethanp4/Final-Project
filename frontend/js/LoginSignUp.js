@@ -243,7 +243,7 @@ function loadExampleData() {
       ratingCount: 0
     },
     {
-      owner: "owner2",
+      owner: "owner1",
       propertyName: "Villa",
       address: "321 Main St",
       capacity: 7,
@@ -267,20 +267,6 @@ function loadExampleData() {
       parkingGarage: true,
       publicTransit: true,
       smoking: true,
-      rating: 0,
-      ratingCount: 0
-    },
-    {
-      owner: "owner",
-      propertyName: "Cottage",
-      address: "123 Main St",
-      capacity: 3,
-      description: "A beautiful cottage",
-      squareFt: 1200,
-      price: 150,
-      parkingGarage: false,
-      publicTransit: false,
-      smoking: false,
       rating: 0,
       ratingCount: 0
     }
