@@ -243,7 +243,7 @@ function loadExampleData() {
       ratingCount: 0
     },
     {
-      owner: "owner1",
+      owner: "owner",
       propertyName: "Villa",
       address: "321 Main St",
       capacity: 7,
