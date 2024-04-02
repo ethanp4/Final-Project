@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const allRoutes = require('./backend/routes/allRoutes.js')
+const allRoutes = require('./routes/allRoutes.js')
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");

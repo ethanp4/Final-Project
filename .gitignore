@@ -1,7 +1,6 @@
 *.docx
 *.odt
 *.pdf
-.vscode
 .directory
 *.txt
 node_modules
