@@ -1,6 +1,6 @@
 $(() => {
   // window.backendURL = "http://localhost:7000"
-  window.backendURL = "https://final-project-k04j.onrender.com"
+  window.backendURL = "https://final-project-dlag.onrender.com"
   var type = localStorage.getItem("type")
   var renterHeader =
     `
