@@ -41,6 +41,14 @@ const propertySchema = new mongoose.Schema({
     type: Boolean,
     required: true
   },
+  rating: {
+    type: Number,
+    required: true
+  },
+  ratingCount: {
+    type: Number,
+    required: true
+  },
   created: {
     type: Date,
     default: Date.now

@@ -1,4 +1,5 @@
 $(() => {
+  window.backendURL = "http://localhost:7000"
   var type = localStorage.getItem("type")
   var renterHeader =
     `

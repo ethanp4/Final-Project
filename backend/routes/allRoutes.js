@@ -2,16 +2,28 @@
 
 const express = require('express')
 const router = express.Router()
-const { getAllProperties, getSingleProperty, getAllOwnersProperties, createProperty, updateProperty, deleteProperty } = require('../controllers/controller')
+// const { getAllProperties, getSingleProperty, getAllOwnersProperties, createProperty, updateProperty, deleteProperty } = require('../controllers/controller')
+
+const { getAllProperties, createProperty, signup, login, getPropertiesByOwnerID, getPropertyByID, populateExampleData } = require('../controllers/controller')
 
 router.get('/properties', getAllProperties)
-router.get('/properties/:id', getSingleProperty)
-router.get('/properties/:ownerid', getAllOwnersProperties)
+
+router.get('/users/:ownerID/properties', getPropertiesByOwnerID)
 
 router.post("/properties", createProperty)
 
-router.put("/properties/:id", updateProperty)
+router.get('/properties/:propertyID', getPropertyByID)
+router.get('/users/:ownerID/properties/:propertyID', getPropertyByID)
 
-router.delete("/properties/:id", deleteProperty)
+// router.put("/properties/:id", updateProperty)
+
+// router.delete("/properties/:id", deleteProperty)
+
+router.post('/signup', signup)
+router.post('/login', login)
+
+// router.get('/users/:id', getUserInfo)
+
+router.post('/populateExampleData', populateExampleData)
 
 module.exports = router

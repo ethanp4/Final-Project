@@ -79,7 +79,7 @@ function filterList(properties) {
     switch (filterBy) {
       case "Name":
         filteredProperties = filteredProperties.filter((property) => {
-          return property.propertyName.toLowerCase().includes(filter)
+          return property.name.toLowerCase().includes(filter)
         })
         break
       case "Address":
@@ -93,8 +93,6 @@ function filterList(properties) {
         })
     }
   }
-
-  console.log(`Filtered properties: ${filteredProperties.length}`)
 
   //filter by capacity
   //from
@@ -150,69 +148,81 @@ function filterList(properties) {
 
 function updateListingsList() {
   //retrieve data from localstorage
-  var properties = JSON.parse(localStorage.getItem("properties"))
-  var filteredProperties = filterList(properties)
 
-  //clear div
-  $("#propertyList").html("")
+  //should update this to only fetch the data per page load 
+  $.ajax({
+    url: `${window.backendURL}/properties`,
+    type: "GET",
+    success: (properties) => {
+      console.log("All properties")
+      console.log(properties)
 
-  //if no properties found
-  if (filteredProperties.length == 0) {
-    $("#propertyList").text("No listings found")
-    return
-  }
+      var filteredProperties = filterList(properties)
 
-  //add data to list
-  filteredProperties.forEach(property => {
-    $("#propertyList").append(`
-    <div class="property" id="${property.propertyName}">
-      <table>
-        <style>th {text-align: left;}</style>
-          <tr>
-            <th>Name:</th>
-            <td class="name">${property.propertyName}</td>
-          </tr>
-          <tr>
-            <th>Address:</th>
-            <td class="address">${property.address}</td>
-          </tr>
-          <tr>
-          <th>Capacity:</th>
-            <td class="capacity">${property.capacity}</td>
-          </tr>
-          <tr>
-            <th>Description:</th>
-            <td class="description">${property.description}</td>
-          </tr>
-          <tr>
-            <th>Square Ft:</th>
-            <td class="squareFt">${property.squareFt}</td>
-          </tr>
-          <tr>
-            <th>Price:</th>
-            <td class="price">${property.price}</td>
-          </tr>
-          <tr>
-            <th><label for="newParkingGarage" class="parkingGarageLabel">Parking Garage:</label></th>
-            <td class="parkingGarage">${property.parkingGarage ? "Yes" : "No"}</td>
-          </tr>
-          <tr>
-            <th><label for="newPublicTransit" class="publicTransitLabel">Public Transit:</label></th>
-            <td class="publicTransit">${property.publicTransit ? "Yes" : "No"}</td>
-          </tr>
-          <tr>
-            <th><label for="newSmoking" class="smokingLabel">Smoking:</label></th>
-            <td class="smoking">${property.smoking ? "Yes" : "No"}</td>
-          </tr>
-          <tr>
-            <td><a href="ListingDetails.html?propertyName=${property.propertyName}">View Details</a></td>
-          </tr>
-        </table>
-    </div><br>
-    `)
+      //clear div
+      $("#propertyList").html("")
+
+      //if no properties found
+      if (filteredProperties.length == 0) {
+        $("#propertyList").text("No listings found")
+        return
+      }
+
+      //add data to list
+      filteredProperties.forEach(property => {
+        $("#propertyList").append(`
+          <div class="property" id="${property.name}">
+            <table>
+              <style>th {text-align: left;}</style>
+                <tr>
+                  <th>Name:</th>
+                  <td class="name">${property.name}</td>
+                </tr>
+                <tr>
+                  <th>Address:</th>
+                  <td class="address">${property.address}</td>
+                </tr>
+                <tr>
+                <th>Capacity:</th>
+                  <td class="capacity">${property.capacity}</td>
+                </tr>
+                <tr>
+                  <th>Description:</th>
+                  <td class="description">${property.description}</td>
+                </tr>
+                <tr>
+                  <th>Square Ft:</th>
+                  <td class="squareFt">${property.squareFt}</td>
+                </tr>
+                <tr>
+                  <th>Price:</th>
+                  <td class="price">${property.price}</td>
+                </tr>
+                <tr>
+                  <th><label for="newParkingGarage" class="parkingGarageLabel">Parking Garage:</label></th>
+                  <td class="parkingGarage">${property.parkingGarage ? "Yes" : "No"}</td>
+                </tr>
+                <tr>
+                  <th><label for="newPublicTransit" class="publicTransitLabel">Public Transit:</label></th>
+                  <td class="publicTransit">${property.publicTransit ? "Yes" : "No"}</td>
+                </tr>
+                <tr>
+                  <th><label for="newSmoking" class="smokingLabel">Smoking:</label></th>
+                  <td class="smoking">${property.smoking ? "Yes" : "No"}</td>
+                </tr>
+                <tr>
+                  <td><a href="ListingDetails.html?propertyName=${property.propertyName}">View Details</a></td>
+                </tr>
+              </table>
+          </div><br>
+        `)
+      })
+
+      setWidths()
+    }
   })
 
-  setWidths()
+
 }
 
 //set the width of each property to the widest one so they align properly

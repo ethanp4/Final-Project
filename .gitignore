@@ -4,3 +4,4 @@
 .directory
 *.txt
 node_modules
+.env
