@@ -46,6 +46,12 @@ const createProperty = async (req, res) => {
 
 const getPropertyByID = async (req, res) => {
   const propertyID = req.params.propertyID
+  try {
+    const property = await propertyData.findById(propertyID)
+    res.json(property)
+  } catch (err) {
+    res.status(500).json({ message: err.message })
+  }
 }
 
 const signup = async (req, res) => {
@@ -257,4 +263,4 @@ const postAuthenticate = async (user, res) => {
 //   }
 // }
 
-module.exports = { getAllProperties, createProperty, signup, login, getPropertiesByOwnerID, populateExampleData }
+module.exports = { getAllProperties, createProperty, signup, login, getPropertiesByOwnerID, getPropertyByID, populateExampleData }
