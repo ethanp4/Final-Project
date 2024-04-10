@@ -4,26 +4,22 @@ const express = require('express')
 const router = express.Router()
 // const { getAllProperties, getSingleProperty, getAllOwnersProperties, createProperty, updateProperty, deleteProperty } = require('../controllers/controller')
 
-const { getAllProperties, createProperty, signup, login, getPropertiesByOwnerID, getPropertyByID, populateExampleData } = require('../controllers/controller')
+const { getAllProperties, createProperty, signup, login, getPropertiesByOwnerID, updateProperty, deleteProperty, getPropertyByID, populateExampleData } = require('../controllers/controller')
 
 router.get('/properties', getAllProperties)
-
 router.get('/users/:ownerID/properties', getPropertiesByOwnerID)
+// router.get('/users/:id', getUserInfo)
 
-router.post("/properties", createProperty)
-
+//both of these routes serve the same purpose, ownerID is ignored
 router.get('/properties/:propertyID', getPropertyByID)
 router.get('/users/:ownerID/properties/:propertyID', getPropertyByID)
 
-// router.put("/properties/:id", updateProperty)
-
-// router.delete("/properties/:id", deleteProperty)
-
+router.post("/properties", createProperty)
 router.post('/signup', signup)
 router.post('/login', login)
-
-// router.get('/users/:id', getUserInfo)
-
 router.post('/populateExampleData', populateExampleData)
+
+router.put('/users/:ownerID/properties/:propertyID', updateProperty)
+router.delete('/users/:ownerID/properties/:propertyID', deleteProperty)
 
 module.exports = router

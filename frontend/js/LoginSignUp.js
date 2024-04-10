@@ -91,11 +91,9 @@ function signUp() {
       type: type
     },
     success: (res) => {
-      console.log(response)
+      console.log(res)
 
-      var user = res.user
-
-      postAuthenticate(user)
+      postAuthenticate(res.user, res.accessToken)
 
 
     },
@@ -134,12 +132,9 @@ function signIn() {
       password: password
     },
     success: (res) => {
+      console.log(res)
 
-      var user = res.user
-
-      postAuthenticate(user)
-
-
+      postAuthenticate(res.user, res.accessToken)
     },
     error: (err) => {
       console.log(err)
@@ -155,7 +150,7 @@ function signOut() {
 }
 
 //common functionality after login/signup
-function postAuthenticate(user) {
+function postAuthenticate(user, token) {
   $("#signInStatus").html("Login successful")
   localStorage.setItem("signedIn", "true")
 
@@ -165,6 +160,8 @@ function postAuthenticate(user) {
   localStorage.setItem("username", username)
 
   localStorage.setItem("userID", user.id)
+
+  localStorage.setItem("token", token)
 
   switch (user.type) {
     case "renter":

@@ -11,6 +11,33 @@ const accessSecret = process.env.ACCESS_TOKEN_SECRET
 
 // getAllProperties, getSingleProperty, getAllOwnersProperties, createProperty, updateProperty, deleteProperty
 
+const updateProperty = async (req, res) => {
+  const accessToken = req.headers.authorization.split(' ')[1]
+
+  try {
+    await jwt.verify(accessToken, accessSecret)
+
+    await propertyData.findByIdAndUpdate(req.params.propertyID, req.body)
+    res.status(201).json({ message: 'Property updated successfully' })
+  } catch (err) {
+    res.status(400).json({ message: err.message })
+  }
+}
+
+const deleteProperty = async (req, res) => {
+  //check if authorization header exists before this
+  const accessToken = req.headers.authorization.split(' ')[1]
+
+  try {
+    await jwt.verify(accessToken, accessSecret)
+
+    await propertyData.findByIdAndDelete(req.params.propertyID)
+    res.status(204).json({ message: 'Property deleted successfully' })
+  } catch (error) {
+    res.status(401).json(error)
+  }
+}
+
 const getAllProperties = async (req, res) => {
   try {
     const properties = await propertyData.find()
@@ -263,4 +290,4 @@ const postAuthenticate = async (user, res) => {
 //   }
 // }
 
-module.exports = { getAllProperties, createProperty, signup, login, getPropertiesByOwnerID, getPropertyByID, populateExampleData }
+module.exports = { getAllProperties, createProperty, signup, login, getPropertiesByOwnerID, getPropertyByID, updateProperty, deleteProperty, populateExampleData }

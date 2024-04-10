@@ -28,11 +28,11 @@ function updateListingsList() {
     url: `${window.backendURL}/users/${localStorage.getItem("userID")}/properties`,
     type: "GET",
     success: (properties) => {
-      console.log(`All matching properties for user: ${localStorage.getItem("userID")}`)
-      console.log(properties)
+      // console.log(`All matching properties for user: ${localStorage.getItem("userID")}`)
+      // console.log(properties)
       properties.forEach(property => {
         $("#yourListings").append(`
-            <div class="property" id="${property.name}">
+            <div class="property" id="${property._id}">
               <table>
               <style>th {text-align: left;}</style>
                 <tr>
@@ -72,77 +72,94 @@ function updateListingsList() {
                   <td class="smoking">${property.smoking ? "Yes" : "No"}</td>
                 </tr>
               </table>
-              <button class="delete" value="${property.propertyName}">Delete</button>
-              <button class="edit" value="${property.propertyName}">Edit</button><br><br>
+              <button class="delete" value="${property._id}">Delete</button>
+              <button class="edit" value="${property._id}">Edit</button><br><br>
             </div>
             `)
       });
       setWidths()
     }
   })
-
-  //add data to list
 }
 
-function deleteListing(propertyName) {
-  var properties = JSON.parse(localStorage.getItem("properties"))
-  var property = properties.find((property) => property.propertyName == propertyName)
-  var index = properties.indexOf(property)
-
-  properties.splice(index, 1)
-
-  localStorage.setItem("properties", JSON.stringify(properties))
-  updateListingsList()
-}
-
-function editListing(propertyName) {
+function deleteListing(propertyID) {
   $.ajax({
-    url: `${window.backendURL}/users/${localStorage.getItem("userID")}/properties`,
-    type: "GET",
-    success: (property) => {
-      //get single property stub
+    url: `${window.backendURL}/users/${localStorage.getItem("userID")}/properties/${propertyID}`,
+    type: "DELETE",
+    beforeSend: (xhr) => {
+      xhr.setRequestHeader("Authorization", `Bearer ${localStorage.getItem("token")}`)
+    },
+    success: () => {
+      updateListingsList()
     }
   })
-  var property = properties.find((property) => property.propertyName == propertyName)
-  // var index = properties.indexOf(property)
+}
 
-  //modify td html for input
-  $(`#${propertyName} .name`).html(`<input type="text" id="newName" value="${property.propertyName}"/>`)
-  $(`#${propertyName} .address`).html(`<input type="text" id="newAddress" value="${property.address}"/>`)
-  $(`#${propertyName} .capacity`).html(`<input type="number" id="newCapacity" value="${property.capacity}"/>`)
-  $(`#${propertyName} .description`).html(`<input type="text" id="newDescription" value="${property.description}"/>`)
-  $(`#${propertyName} .squareFt`).html(`<input type="number" id="newSquareFt" value="${property.squareFt}"/>`)
-  $(`#${propertyName} .price`).html(`<input type="number" id="newPrice" value="${property.price}"/>`)
-  $(`#${propertyName} .parkingGarage`).html(`<input type="checkbox" id="newParkingGarage" ${property.parkingGarage ? "checked" : ""} />`)
-  $(`#${propertyName} .publicTransit`).html(`<input type="checkbox" id="newPublicTransit" ${property.publicTransit ? "checked" : ""} />`)
-  $(`#${propertyName} .smoking`).html(`<input type="checkbox" id="newSmoking" ${property.smoking ? "checked" : ""} />`)
+function editListing(propertyID) {
 
-  //remove the delete and edit buttons
-  $(`#${propertyName} .delete`).remove()
-  $(`#${propertyName} .edit`).remove()
+  $.ajax({
+    url: `${window.backendURL}/users/${localStorage.getItem("userID")}/properties/${propertyID}`,
+    type: "GET",
+    success: (property) => {
+      $(`#${propertyID} .name`).html(`<input type="text" id="newName" value="${property.name}"/>`)
+      $(`#${propertyID} .address`).html(`<input type="text" id="newAddress" value="${property.address}"/>`)
+      $(`#${propertyID} .capacity`).html(`<input type="number" id="newCapacity" value="${property.capacity}"/>`)
+      $(`#${propertyID} .description`).html(`<input type="text" id="newDescription" value="${property.description}"/>`)
+      $(`#${propertyID} .squareFt`).html(`<input type="number" id="newSquareFt" value="${property.squareFt}"/>`)
+      $(`#${propertyID} .price`).html(`<input type="number" id="newPrice" value="${property.price}"/>`)
+      $(`#${propertyID} .parkingGarage`).html(`<input type="checkbox" id="newParkingGarage" ${property.parkingGarage ? "checked" : ""} />`)
+      $(`#${propertyID} .publicTransit`).html(`<input type="checkbox" id="newPublicTransit" ${property.publicTransit ? "checked" : ""} />`)
+      $(`#${propertyID} .smoking`).html(`<input type="checkbox" id="newSmoking" ${property.smoking ? "checked" : ""} />`)
 
-  //add a save button
-  $(`#${propertyName} table`).append(`<button class="save" value="${property.propertyName}">Save</button>`)
+      //remove the delete and edit buttons
+      $(`#${propertyID} .delete`).remove()
+      $(`#${propertyID} .edit`).remove()
 
-  //set event listener for the save button
-  $(`#${propertyName} .save`).click(() => {
-    //modify property object
-    property.propertyName = $(`#${propertyName} #newName`).val()
-    property.address = $(`#${propertyName} #newAddress`).val()
-    property.capacity = $(`#${propertyName} #newCapacity`).val()
-    property.description = $(`#${propertyName} #newDescription`).val()
-    property.squareFt = $(`#${propertyName} #newSquareFt`).val()
-    property.price = $(`#${propertyName} #newPrice`).val()
-    property.parkingGarage = $(`#${propertyName} #newParkingGarage`).prop("checked")
-    property.publicTransit = $(`#${propertyName} #newPublicTransit`).prop("checked")
-    property.smoking = $(`#${propertyName} #newSmoking`).prop("checked")
+      //add a save button
+      $(`#${propertyID} table`).append(`<button class="save" value="${property.propertyID}">Save</button>`)
 
-    // properties[index] = newProperty
+      //set event listener for the save button
+      $(`#${propertyID} .save`).click(() => {
 
-    //update the local storage item
-    localStorage.setItem("properties", JSON.stringify(properties))
-    updateListingsList()
+        $.ajax({
+          url: `${window.backendURL}/users/${localStorage.getItem("userID")}/properties/${propertyID}`,
+          type: "PUT",
+          beforeSend: (xhr) => {
+            xhr.setRequestHeader("Authorization", `Bearer ${localStorage.getItem("token")}`)
+          },
+          data: {
+            name: $(`#${propertyID} #newName`).val(),
+            address: $(`#${propertyID} #newAddress`).val(),
+            capacity: $(`#${propertyID} #newCapacity`).val(),
+            description: $(`#${propertyID} #newDescription`).val(),
+            squareFt: $(`#${propertyID} #newSquareFt`).val(),
+            price: $(`#${propertyID} #newPrice`).val(),
+            parkingGarage: $(`#${propertyID} #newParkingGarage`).prop("checked"),
+            publicTransit: $(`#${propertyID} #newPublicTransit`).prop("checked"),
+            smoking: $(`#${propertyID} #newSmoking`).prop("checked")
+          },
+          success: () => {
+            updateListingsList()
+          }
+        })
+
+        // //modify property object
+        // property.propertyName = $(`#${propertyName} #newName`).val()
+        // property.address = $(`#${propertyName} #newAddress`).val()
+        // property.capacity = $(`#${propertyName} #newCapacity`).val()
+        // property.description = $(`#${propertyName} #newDescription`).val()
+        // property.squareFt = $(`#${propertyName} #newSquareFt`).val()
+        // property.price = $(`#${propertyName} #newPrice`).val()
+        // property.parkingGarage = $(`#${propertyName} #newParkingGarage`).prop("checked")
+        // property.publicTransit = $(`#${propertyName} #newPublicTransit`).prop("checked")
+        // property.smoking = $(`#${propertyName} #newSmoking`).prop("checked")
+
+        updateListingsList()
+      })
+
+    }
   })
+
 }
 
 // this function has been converted to use db
