@@ -2,14 +2,12 @@ const userData = require('../models/user')
 const propertyData = require('../models/property')
 
 const jwt = require('jsonwebtoken')
-const crypto = require('crypto')
 const bcrypt = require('bcrypt')
 
 require('dotenv').config()
 
+//servers access secret for generating and verifying tokens
 const accessSecret = process.env.ACCESS_TOKEN_SECRET
-
-// getAllProperties, getSingleProperty, getAllOwnersProperties, createProperty, updateProperty, deleteProperty
 
 const updateProperty = async (req, res) => {
   const accessToken = req.headers.authorization.split(' ')[1]
@@ -25,7 +23,6 @@ const updateProperty = async (req, res) => {
 }
 
 const deleteProperty = async (req, res) => {
-  //check if authorization header exists before this
   const accessToken = req.headers.authorization.split(' ')[1]
 
   try {
@@ -135,6 +132,10 @@ const getPropertiesByOwnerID = async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: err.message })
   }
+}
+
+const submitPropertyRating = async (req, res) => {
+
 }
 
 const populateExampleData = async (req, res) => {
@@ -290,4 +291,4 @@ const postAuthenticate = async (user, res) => {
 //   }
 // }
 
-module.exports = { getAllProperties, createProperty, signup, login, getPropertiesByOwnerID, getPropertyByID, updateProperty, deleteProperty, populateExampleData }
+module.exports = { getAllProperties, createProperty, signup, login, getPropertiesByOwnerID, submitPropertyRating, getPropertyByID, updateProperty, deleteProperty, populateExampleData }

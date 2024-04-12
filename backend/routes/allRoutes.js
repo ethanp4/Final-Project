@@ -4,7 +4,7 @@ const express = require('express')
 const router = express.Router()
 // const { getAllProperties, getSingleProperty, getAllOwnersProperties, createProperty, updateProperty, deleteProperty } = require('../controllers/controller')
 
-const { getAllProperties, createProperty, signup, login, getPropertiesByOwnerID, updateProperty, deleteProperty, getPropertyByID, populateExampleData } = require('../controllers/controller')
+const { getAllProperties, createProperty, signup, login, submitPropertyRating, getPropertiesByOwnerID, updateProperty, deleteProperty, getPropertyByID, populateExampleData } = require('../controllers/controller')
 
 router.get('/properties', getAllProperties)
 router.get('/users/:ownerID/properties', getPropertiesByOwnerID)
@@ -18,6 +18,8 @@ router.post("/properties", createProperty)
 router.post('/signup', signup)
 router.post('/login', login)
 router.post('/populateExampleData', populateExampleData)
+
+router.post('/properties/:propertyID/submitrating', submitPropertyRating)
 
 router.put('/users/:ownerID/properties/:propertyID', updateProperty)
 router.delete('/users/:ownerID/properties/:propertyID', deleteProperty)
