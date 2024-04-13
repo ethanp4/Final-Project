@@ -32,7 +32,7 @@ $(() => {
       $("#ratingCount").text(property.ratingCount == 0 ? "No ratings yet" : `${property.ratingCount}`)
 
       $("#submitRating").click(() => {
-        rateProperty()
+        rateProperty(property._id)
       })
 
       //enable and disable submit button
@@ -50,24 +50,25 @@ $(() => {
     }
   })
 
-
-
-
-
-
 })
 
-function rateProperty() {
-  var properties = JSON.parse(localStorage.getItem("properties"))
-  var property = properties.find((property) => property.propertyName == $("#name").text())
+function rateProperty(id) {
+  $.ajax({
+    url: `${window.backendURL}/properties/${id}/submitrating`,
+    type: 'POST',
+    data: {
+      rating: $("#userRating").val()
+    },
+    success: (res) => {
+      console.log(res)
+      $("#status").text("Rating submitted!")
+      $("#submitRating").prop("disabled", true)
+      $("#rating").text(res.newRating)
+      $("#ratingCount").text(res.newCount)
+    },
+    error: (err) => {
+      console.log(err)
+    }
+  })
 
-  property.rating += parseInt($("#userRating").val())
-  property.ratingCount++
-
-  localStorage.setItem("properties", JSON.stringify(properties))
-
-  $("#status").text("Rating submitted!")
-  $("#submitRating").prop("disabled", true)
-  $("#rating").text((property.rating / property.ratingCount).toFixed(1) + "/5")
-  $("#ratingCount").text(property.ratingCount)
 }

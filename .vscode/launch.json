@@ -17,7 +17,7 @@
         "backend",
         "./backend/index.js"
       ],
-      "console": "integratedTerminal"
+      "console": "internalConsole"
     }
   ]
 }

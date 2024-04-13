@@ -134,6 +134,7 @@ function signIn() {
     success: (res) => {
       console.log(res)
 
+
       postAuthenticate(res.user, res.accessToken)
     },
     error: (err) => {

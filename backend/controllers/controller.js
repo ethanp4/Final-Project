@@ -135,7 +135,16 @@ const getPropertiesByOwnerID = async (req, res) => {
 }
 
 const submitPropertyRating = async (req, res) => {
-
+  try {
+    var property = await propertyData.findById(req.params.propertyID)
+    property.rating += parseInt(req.body.rating)
+    property.ratingCount++
+    await propertyData.findByIdAndUpdate(req.params.propertyID, property)
+    console.log(property)
+    res.status(201).json({ message: 'Rating submitted successfully', newRating: (property.rating / property.ratingCount).toFixed(1) + "/5", newCount: property.ratingCount })
+  } catch (err) {
+    res.status(500).json({ message: err.message })
+  }
 }
 
 const populateExampleData = async (req, res) => {
