@@ -18,7 +18,7 @@ const updateProperty = async (req, res) => {
     await propertyData.findByIdAndUpdate(req.params.propertyID, req.body)
     res.status(201).json({ message: 'Property updated successfully' })
   } catch (err) {
-    console.log(err)
+    // console.log(err)
     res.status(400).json({ message: err.message })
   }
 }
@@ -57,6 +57,7 @@ const createProperty = async (req, res) => {
     parkingGarage: req.body.parkingGarage,
     publicTransit: req.body.publicTransit,
     smoking: req.body.smoking,
+    forRent: req.body.forRent,
     rating: 0,
     ratingCount: 0
   })
@@ -148,122 +149,122 @@ const submitPropertyRating = async (req, res) => {
     property.rating += parseInt(req.body.rating)
     property.ratingCount++
     await propertyData.findByIdAndUpdate(req.params.propertyID, property)
-    console.log(property)
+    // console.log(property)
     res.status(201).json({ message: 'Rating submitted successfully', newRating: (property.rating / property.ratingCount).toFixed(1) + "/5", newCount: property.ratingCount })
   } catch (err) {
     res.status(500).json({ message: err.message })
   }
 }
 
-const populateExampleData = async (req, res) => {
+// const populateExampleData = async (req, res) => {
 
-  var exampleListingsData = [
-    {
-      ownerID: " ",
-      name: "House",
-      address: "123 Main St",
-      capacity: 4,
-      description: "A beautiful house",
-      squareFt: 1000,
-      price: 100,
-      parkingGarage: true,
-      publicTransit: false,
-      smoking: false,
-      rating: 0,
-      ratingCount: 0
-    },
-    {
-      ownerID: " ",
-      name: "Apartment",
-      address: "456 Main St",
-      capacity: 2,
-      description: "A beautiful apartment",
-      squareFt: 500,
-      price: 50,
-      parkingGarage: false,
-      publicTransit: true,
-      smoking: false,
-      rating: 15,
-      ratingCount: 3
-    },
-    {
-      ownerID: " ",
-      name: "Office",
-      address: "789 Main St",
-      capacity: 10,
-      description: "A beautiful office",
-      squareFt: 2000,
-      price: 200,
-      parkingGarage: true,
-      publicTransit: true,
-      smoking: true,
-      rating: 3,
-      ratingCount: 1
-    },
-    {
-      ownerID: " ",
-      name: "Cottage",
-      address: "987 Main St",
-      capacity: 3,
-      description: "A beautiful cottage",
-      squareFt: 1200,
-      price: 150,
-      parkingGarage: false,
-      publicTransit: false,
-      smoking: false,
-      rating: 0,
-      ratingCount: 0
-    },
-    {
-      ownerID: " ",
-      name: "Cabin",
-      address: "654 Main St",
-      capacity: 5,
-      description: "A beautiful cabin",
-      squareFt: 1500,
-      price: 250,
-      parkingGarage: true,
-      publicTransit: true,
-      smoking: true,
-      rating: 0,
-      ratingCount: 0
-    },
-    {
-      ownerID: " ",
-      name: "Villa",
-      address: "321 Main St",
-      capacity: 7,
-      description: "A beautiful villa",
-      squareFt: 3000,
-      price: 300,
-      parkingGarage: true,
-      publicTransit: true,
-      smoking: true,
-      rating: 0,
-      ratingCount: 0
-    },
-    {
-      ownerID: " ",
-      name: "Chalet",
-      address: "123 Main St",
-      capacity: 8,
-      description: "A beautiful chalet",
-      squareFt: 4000,
-      price: 400,
-      parkingGarage: true,
-      publicTransit: true,
-      smoking: true,
-      rating: 0,
-      ratingCount: 0
-    }
-  ]
+//   var exampleListingsData = [
+//     {
+//       ownerID: " ",
+//       name: "House",
+//       address: "123 Main St",
+//       capacity: 4,
+//       description: "A beautiful house",
+//       squareFt: 1000,
+//       price: 100,
+//       parkingGarage: true,
+//       publicTransit: false,
+//       smoking: false,
+//       rating: 0,
+//       ratingCount: 0
+//     },
+//     {
+//       ownerID: " ",
+//       name: "Apartment",
+//       address: "456 Main St",
+//       capacity: 2,
+//       description: "A beautiful apartment",
+//       squareFt: 500,
+//       price: 50,
+//       parkingGarage: false,
+//       publicTransit: true,
+//       smoking: false,
+//       rating: 15,
+//       ratingCount: 3
+//     },
+//     {
+//       ownerID: " ",
+//       name: "Office",
+//       address: "789 Main St",
+//       capacity: 10,
+//       description: "A beautiful office",
+//       squareFt: 2000,
+//       price: 200,
+//       parkingGarage: true,
+//       publicTransit: true,
+//       smoking: true,
+//       rating: 3,
+//       ratingCount: 1
+//     },
+//     {
+//       ownerID: " ",
+//       name: "Cottage",
+//       address: "987 Main St",
+//       capacity: 3,
+//       description: "A beautiful cottage",
+//       squareFt: 1200,
+//       price: 150,
+//       parkingGarage: false,
+//       publicTransit: false,
+//       smoking: false,
+//       rating: 0,
+//       ratingCount: 0
+//     },
+//     {
+//       ownerID: " ",
+//       name: "Cabin",
+//       address: "654 Main St",
+//       capacity: 5,
+//       description: "A beautiful cabin",
+//       squareFt: 1500,
+//       price: 250,
+//       parkingGarage: true,
+//       publicTransit: true,
+//       smoking: true,
+//       rating: 0,
+//       ratingCount: 0
+//     },
+//     {
+//       ownerID: " ",
+//       name: "Villa",
+//       address: "321 Main St",
+//       capacity: 7,
+//       description: "A beautiful villa",
+//       squareFt: 3000,
+//       price: 300,
+//       parkingGarage: true,
+//       publicTransit: true,
+//       smoking: true,
+//       rating: 0,
+//       ratingCount: 0
+//     },
+//     {
+//       ownerID: " ",
+//       name: "Chalet",
+//       address: "123 Main St",
+//       capacity: 8,
+//       description: "A beautiful chalet",
+//       squareFt: 4000,
+//       price: 400,
+//       parkingGarage: true,
+//       publicTransit: true,
+//       smoking: true,
+//       rating: 0,
+//       ratingCount: 0
+//     }
+//   ]
 
-  for (var i = 0; i < exampleListingsData.length; i++) {
-    var property = new propertyData(exampleListingsData[i])
-    await property.save()
-  }
-  res.status(200).json({ message: "Data populated" })
-}
+//   for (var i = 0; i < exampleListingsData.length; i++) {
+//     var property = new propertyData(exampleListingsData[i])
+//     await property.save()
+//   }
+//   res.status(200).json({ message: "Data populated" })
+// }
 
 //common functionality after login/signup
 const postAuthenticate = async (user, res) => {

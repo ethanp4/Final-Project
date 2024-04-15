@@ -147,9 +147,6 @@ function filterList(properties) {
 }
 
 function updateListingsList() {
-  //retrieve data from localstorage
-
-  //should update this to only fetch the data per page load 
   $.ajax({
     url: `${window.backendURL}/properties`,
     type: "GET",
@@ -221,8 +218,6 @@ function updateListingsList() {
       setWidths()
     }
   })
-
-
 }
 
 //set the width of each property to the widest one so they align properly

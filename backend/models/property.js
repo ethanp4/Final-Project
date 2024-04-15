@@ -41,6 +41,10 @@ const propertySchema = new mongoose.Schema({
     type: Boolean,
     required: true
   },
+  forRent: {
+    type: Boolean,
+    require: true
+  },
   rating: {
     type: Number,
     default: 0

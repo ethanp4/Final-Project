@@ -49,8 +49,6 @@ function checkIfUserExists(username) {
 }
 
 function signUp() {
-  // var userData = JSON.parse(localStorage.getItem("userData"))
-
   username = $("#newUsername").val()
   password = $("#newPassword").val()
 
@@ -92,35 +90,16 @@ function signUp() {
     },
     success: (res) => {
       console.log(res)
-
       postAuthenticate(res.user, res.accessToken)
-
-
     },
     error: (error) => {
       console.log(error)
     }
   })
 
-  // //add to array
-  // userData.push({
-  //   "id": userData.length + 1,
-  //   "type": type,
-  //   "username": username,
-  //   "password": password,
-  //   "firstName": firstName,
-  //   "lastName": lastName,
-  //   "email": email,
-  //   "phone": phone
-  // })
-
-  //set local storage
-  // localStorage.setItem("userData", JSON.stringify(userData))
 }
 
 function signIn() {
-  // var userData = JSON.parse(localStorage.getItem("userData"))
-
   var username = $("#username").val()
   var password = $("#password").val()
 
@@ -171,26 +150,8 @@ function postAuthenticate(user, token) {
   }
 }
 
-// function getUserInfo(id, token) {
-//   $.ajax({
-//     url: `${window.backendURL}/users/${id}`,
-//     method: "GET",
-//     beforeSend: (xhr) => {
-//       xhr.setRequestHeader("Authorization", `Bearer ${token}`)
-//     },
-//     success: (res) => {
-//       return res
-//     },
-//     error: (err) => {
-//       return err
-//     }
-//   })
-// }
 
 function loadExampleData() {
-
-  // localStorage.setItem("userData", JSON.stringify(exampleUserData))
-  // localStorage.setItem("properties", JSON.stringify(exampleListingsData))
 
   $.ajax({
     url: `${window.backendURL}/populateExampleData`,

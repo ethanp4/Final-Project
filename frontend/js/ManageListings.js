@@ -22,13 +22,10 @@ function updateListingsList() {
   //clear div
   $("#yourListings").html("")
 
-  // properties = properties.filter(property => property.owner == localStorage.getItem("username"))
-
   $.ajax({
     url: `${window.backendURL}/users/${localStorage.getItem("userID")}/properties`,
     type: "GET",
     success: (properties) => {
-      // console.log(`All matching properties for user: ${localStorage.getItem("userID")}`)
       // console.log(properties)
       properties.forEach(property => {
         $("#yourListings").append(`
@@ -57,7 +54,7 @@ function updateListingsList() {
                 </tr>
                 <tr>
                   <th>Price:</th>
-                  <td class="price">${property.price}</td>
+                  <td class="price">$${property.price}/day</td>
                 </tr>
                 <tr>
                   <th><label for="newParkingGarage" class="parkingGarageLabel">Parking Garage:</label></th>
@@ -70,6 +67,10 @@ function updateListingsList() {
                 <tr>
                   <th><label for="newSmoking" class="smokingLabel">Smoking:</label></th>
                   <td class="smoking">${property.smoking ? "Yes" : "No"}</td>
+                </tr>
+                <tr>
+                  <th><label for="newForRent" class="forRentLabel">For Rent:</label></th>
+                  <td class="forRent">${property.forRent ? "Yes" : "No"}</td>
                 </tr>
               </table>
               <button class="delete" value="${property._id}">Delete</button>
@@ -111,6 +112,7 @@ function editListing(propertyID) {
       $(`#${propertyID} .parkingGarage`).html(`<input type="checkbox" id="newParkingGarage" ${property.parkingGarage ? "checked" : ""} />`)
       $(`#${propertyID} .publicTransit`).html(`<input type="checkbox" id="newPublicTransit" ${property.publicTransit ? "checked" : ""} />`)
       $(`#${propertyID} .smoking`).html(`<input type="checkbox" id="newSmoking" ${property.smoking ? "checked" : ""} />`)
+      $(`#${propertyID} .forRent`).html(`<input type="checkbox" id="newForRent" ${property.forRent ? "checked" : ""} />`)
 
       //remove the delete and edit buttons
       $(`#${propertyID} .delete`).remove()
@@ -137,35 +139,20 @@ function editListing(propertyID) {
             price: $(`#${propertyID} #newPrice`).val(),
             parkingGarage: $(`#${propertyID} #newParkingGarage`).prop("checked"),
             publicTransit: $(`#${propertyID} #newPublicTransit`).prop("checked"),
-            smoking: $(`#${propertyID} #newSmoking`).prop("checked")
+            smoking: $(`#${propertyID} #newSmoking`).prop("checked"),
+            forRent: $(`#${propertyID} #newForRent`).prop("checked")
           },
           success: () => {
             updateListingsList()
           }
         })
-
-        // //modify property object
-        // property.propertyName = $(`#${propertyName} #newName`).val()
-        // property.address = $(`#${propertyName} #newAddress`).val()
-        // property.capacity = $(`#${propertyName} #newCapacity`).val()
-        // property.description = $(`#${propertyName} #newDescription`).val()
-        // property.squareFt = $(`#${propertyName} #newSquareFt`).val()
-        // property.price = $(`#${propertyName} #newPrice`).val()
-        // property.parkingGarage = $(`#${propertyName} #newParkingGarage`).prop("checked")
-        // property.publicTransit = $(`#${propertyName} #newPublicTransit`).prop("checked")
-        // property.smoking = $(`#${propertyName} #newSmoking`).prop("checked")
-
-        updateListingsList()
       })
-
     }
   })
 
 }
 
-// this function has been converted to use db
 function createListing() {
-  // var properties = JSON.parse(localStorage.getItem("properties"))
 
   var propertyName = $("#propertyName").val()
   var address = $("#address").val()
@@ -176,6 +163,7 @@ function createListing() {
   var parkingGarage = $("#parkingGarage").prop("checked")
   var publicTransit = $("#publicTransit").prop("checked")
   var smoking = $("#smoking").prop("checked")
+  var forRent = $("#forRent").prop("checked")
 
   if (checkIfListingExists(propertyName)) {
     return
@@ -194,7 +182,8 @@ function createListing() {
       price: price,
       parkingGarage: parkingGarage,
       publicTransit: publicTransit,
-      smoking: smoking
+      smoking: smoking,
+      forRent: forRent
     },
     success: (response) => {
       //update list
@@ -220,25 +209,6 @@ function createListing() {
       console.log(error)
     }
   })
-
-  // //add data to beginning of array
-  // properties.unshift({
-  //   "owner": localStorage.getItem("username"),
-  //   "propertyName": propertyName,
-  //   "address": address,
-  //   "capacity": capacity,
-  //   "description": description,
-  //   "squareFt": squareFt,
-  //   "price": price,
-  //   "parkingGarage": parkingGarage,
-  //   "publicTransit": publicTransit,
-  //   "smoking": smoking,
-  //   "rating": 0,
-  //   "ratingCount": 0
-  // })
-
-  // //set data in local storage for consistency until we use nodejs
-  // localStorage.setItem("properties", JSON.stringify(properties))
 
 }
 

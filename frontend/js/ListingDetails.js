@@ -23,7 +23,7 @@ $(() => {
       $("#capacity").text(property.capacity)
       $("#description").text(property.description)
       $("#squareFt").text(property.squareFt)
-      $("#price").text(property.price)
+      $("#price").text("$" + property.price + "/day")
       $("#parkingGarage").text(property.parkingGarage ? "Yes" : "No")
       $("#publicTransit").text(property.publicTransit ? "Yes" : "No")
       $("#smoking").text(property.smoking ? "Yes" : "No")
