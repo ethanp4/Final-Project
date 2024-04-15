@@ -38,7 +38,7 @@ const deleteProperty = async (req, res) => {
 
 const getAllProperties = async (req, res) => {
   try {
-    const properties = await propertyData.find()
+    const properties = await propertyData.find({ forRent: true })
     res.json(properties)
   } catch (err) {
     res.status(500).json({ message: err.message })
