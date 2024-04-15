@@ -118,7 +118,7 @@ function filterList(properties) {
   //to
   if ($("label[for=squareFtTo]").css("font-weight") == "700") {
     filteredProperties = filteredProperties.filter((property) => {
-      return roperty.squareFt <= $("#squareFtTo").val()
+      return property.squareFt <= $("#squareFtTo").val()
     })
   }
 
@@ -151,9 +151,6 @@ function updateListingsList() {
     url: `${window.backendURL}/properties`,
     type: "GET",
     success: (properties) => {
-      console.log("All properties")
-      console.log(properties)
-
       var filteredProperties = filterList(properties)
 
       //clear div
@@ -214,7 +211,6 @@ function updateListingsList() {
           </div><br>
         `)
       })
-
       setWidths()
     }
   })

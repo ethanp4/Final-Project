@@ -1,18 +1,18 @@
 h3 {
-    text-align: center;
+  text-align: center;
 }
 
 #status {
-    text-align: center;
+  text-align: center;
 }
 
 #createListing,
 #yourListings {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #yourListings {
-    flex-direction: column;
+  flex-direction: column;
 }

@@ -44,8 +44,6 @@ $(() => {
         }
       })
 
-      console.log(ownerInfo)
-
       $("#ownerName").text((ownerInfo.firstName + " " + ownerInfo.lastName) == " " ? "This owner hasn't set a name" : (ownerInfo.firstName + " " + ownerInfo.lastName))
       $("#email").text(ownerInfo.email == "" ? "This owner hasn't set an email" : ownerInfo.email)
       $("#phone").text(ownerInfo.phone == "" ? "This owner hasn't set a phone number" : ownerInfo.phone)

@@ -97,7 +97,6 @@ function deleteListing(propertyID) {
 }
 
 function editListing(propertyID) {
-
   $.ajax({
     url: `${window.backendURL}/users/${localStorage.getItem("userID")}/properties/${propertyID}`,
     type: "GET",
@@ -149,7 +148,6 @@ function editListing(propertyID) {
       })
     }
   })
-
 }
 
 function createListing() {
@@ -199,9 +197,7 @@ function createListing() {
       $("#parkingGarage").prop("checked", false)
       $("#publicTransit").prop("checked", false)
       $("#smoking").prop("checked", false)
-
       $("#status").text("Listing created!")
-
       console.log(response)
     },
     error: (error) => {
@@ -209,7 +205,6 @@ function createListing() {
       console.log(error)
     }
   })
-
 }
 
 function checkIfListingExists(name) {

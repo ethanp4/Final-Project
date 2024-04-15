@@ -1,36 +1,29 @@
 #contents {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* flex-direction: column; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 table {
-    /* display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column; */
-    /* display: inline-block; */
-    float: left;
-    /* height: 300px; */
-    padding: 20px;
+  float: left;
+  padding: 20px;
 }
 
 #ownerInfo {
-    padding-bottom: 200px;
+  padding-bottom: 200px;
 }
 
 #propertyTable {
-    padding-left: 100px;
+  padding-left: 100px;
 }
 
 #rateThisProperty {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #status,
 h3 {
-    text-align: center;
+  text-align: center;
 }

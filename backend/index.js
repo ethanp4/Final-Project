@@ -18,10 +18,7 @@ app.use((req, res, next) => {
   next();
 })
 
-// convert form data to javascript object and put into request body
 app.use(express.urlencoded({ extended: false }))
-
-// convert json to javascript object and put into request body
 app.use(express.json())
 app.use(allRoutes)
 

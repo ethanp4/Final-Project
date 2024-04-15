@@ -13,15 +13,12 @@ $(() => {
     $("#signInStatus").html("Youre already signed in")
     $("#signInStatus").append("<br><a href='Main.html'>Go to main page</a>")
     $("#signInStatus").append("<br><a id='signOut' href='LoginPage.html'>Sign out</a>")
-
     $("#signOut").click(() => { signOut() })
-
     $("select").hide()
     $("input").hide()
     $("button").hide()
     $("h3").hide()
     $("h4").hide()
-
   }
 
   $("#signUp").submit((event) => {
@@ -96,7 +93,6 @@ function signUp() {
       console.log(error)
     }
   })
-
 }
 
 function signIn() {
@@ -130,14 +126,10 @@ function signOut() {
 function postAuthenticate(user, token) {
   $("#signInStatus").html("Login successful")
   localStorage.setItem("signedIn", "true")
-
   localStorage.setItem("type", user.type)
   localStorage.setItem("name", `${user.firstName} ${user.lastName}`)
-
   localStorage.setItem("username", username)
-
   localStorage.setItem("userID", user.id)
-
   localStorage.setItem("token", token)
 
   switch (user.type) {
@@ -149,7 +141,6 @@ function postAuthenticate(user, token) {
       break
   }
 }
-
 
 function loadExampleData() {
 

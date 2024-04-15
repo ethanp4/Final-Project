@@ -1,18 +1,17 @@
 #filterDiv,
 #propertyList {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #propertyList {
-    flex-direction: column;
+  flex-direction: column;
 }
 
 #resetParking,
 #resetTransit,
 #resetSmoking {
-    position: relative;
-    bottom: 5px;
+  position: relative;
+  bottom: 5px;
 }
-

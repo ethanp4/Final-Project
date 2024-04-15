@@ -1,34 +1,24 @@
 /* center things */
 #tableContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* flex-direction: column; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 table {
-    float: left;
+  float: left;
 }
 
 #signInTable {
-    width: 300px;
-    padding-left: 20px;
-    padding-bottom: 148px
+  width: 300px;
+  padding-left: 20px;
+  padding-bottom: 148px
 }
 
-/* #signUpTable {
-    padding-left: 100px;
-} */
-
 h4 {
-    margin-top: 0px;
+  margin-top: 0px;
 }
 
 header {
-    text-align: center;
+  text-align: center;
 }
-
-/* #signUpStatus,
-#signInStatus {
-    text-align: center;
-} */

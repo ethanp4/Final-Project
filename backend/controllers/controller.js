@@ -1,9 +1,8 @@
 const userData = require('../models/user')
 const propertyData = require('../models/property')
-
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
-
+//dotenv is used for secret and database url
 require('dotenv').config()
 
 //servers access secret for generating and verifying tokens
@@ -11,24 +10,19 @@ const accessSecret = process.env.ACCESS_TOKEN_SECRET
 
 const updateProperty = async (req, res) => {
   const accessToken = req.headers.authorization.split(' ')[1]
-
   try {
     await jwt.verify(accessToken, accessSecret)
-
     await propertyData.findByIdAndUpdate(req.params.propertyID, req.body)
     res.status(201).json({ message: 'Property updated successfully' })
   } catch (err) {
-    // console.log(err)
     res.status(400).json({ message: err.message })
   }
 }
 
 const deleteProperty = async (req, res) => {
   const accessToken = req.headers.authorization.split(' ')[1]
-
   try {
     await jwt.verify(accessToken, accessSecret)
-
     await propertyData.findByIdAndDelete(req.params.propertyID)
     res.status(204).json({ message: 'Property deleted successfully' })
   } catch (error) {
@@ -61,7 +55,6 @@ const createProperty = async (req, res) => {
     rating: 0,
     ratingCount: 0
   })
-
   try {
     const newProperty = await property.save()
     res.json(newProperty)
@@ -89,7 +82,6 @@ const getPropertyByID = async (req, res) => {
 
 const signup = async (req, res) => {
   if (await userData.findOne({ username: req.body.username })) {
-    console.log("User already exists")
     return res.status(400).json({ message: "User already exists" })
   }
   try {
@@ -103,13 +95,8 @@ const signup = async (req, res) => {
       phone: req.body.phone,
       type: req.body.type
     })
-
     await user.save()
-
-    // console.log(res)
-
     res = await postAuthenticate(user, res)
-
   } catch (err) {
     res.status(500).json({ message: err.message })
   }
@@ -119,16 +106,12 @@ const login = async (req, res) => {
   try {
     const user = await userData.findOne({ username: req.body.username })
     if (!user) {
-      console.log("User not found")
       return res.status(400).json({ message: "Invalid username or password" })
     }
     if (!await bcrypt.compare(req.body.password, user.password)) {
-      console.log("Password incorrect")
       return res.status(400).json({ message: "Invalid username or password" })
     }
-
     res = await postAuthenticate(user, res)
-
   } catch (err) {
     res.status(500).json({ message: err.message })
   }
@@ -149,19 +132,16 @@ const submitPropertyRating = async (req, res) => {
     property.rating += parseInt(req.body.rating)
     property.ratingCount++
     await propertyData.findByIdAndUpdate(req.params.propertyID, property)
-    // console.log(property)
     res.status(201).json({ message: 'Rating submitted successfully', newRating: (property.rating / property.ratingCount).toFixed(1) + "/5", newCount: property.ratingCount })
   } catch (err) {
     res.status(500).json({ message: err.message })
   }
 }
 
-
-
 //common functionality after login/signup
 const postAuthenticate = async (user, res) => {
   const userJWT = { username: user.username, type: user.type }
-  const accessToken = jwt.sign(userJWT, accessSecret, { expiresIn: '1h' })
+  const accessToken = jwt.sign(userJWT, accessSecret)
 
   return res.status(201).json({
     user: {
