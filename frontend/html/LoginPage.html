@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap" rel="stylesheet">
@@ -91,23 +91,19 @@
           <td><input id="username" required placeholder="Username"></td>
         </tr>
         <tr>
-          <td><input id="password" required placeholder="Password"></td>
+          <td><input type="password" id="password" required placeholder="Password"></td>
         </tr>
         <tr>
           <td><button style="margin-top: 10px">Sign in</button></td>
         </tr>
+        <tr>
+          <td>
+            <div id="signInStatus"></div>
+          </td>
+        </tr>
       </form>
     </table>
 
-    <div id="signInStatus"></div>
-
-  </div>
-
-  <div id="buttons">
-    <br><br><br>
-    <button id="clearLocalstorage" onclick="localStorage.clear(); location.reload();">Clear localstorage</button>
-    <!-- <button id="exampleData">Load example data</button> -->
-  </div>
 
 </body>
 

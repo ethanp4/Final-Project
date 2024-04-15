@@ -18,6 +18,7 @@ const updateProperty = async (req, res) => {
     await propertyData.findByIdAndUpdate(req.params.propertyID, req.body)
     res.status(201).json({ message: 'Property updated successfully' })
   } catch (err) {
+    console.log(err)
     res.status(400).json({ message: err.message })
   }
 }
@@ -72,7 +73,14 @@ const getPropertyByID = async (req, res) => {
   const propertyID = req.params.propertyID
   try {
     const property = await propertyData.findById(propertyID)
-    res.json(property)
+    const owner = await userData.findById(property.ownerID)
+    const ownerInfo = {
+      firstName: owner.firstName,
+      lastName: owner.lastName,
+      email: owner.email,
+      phone: owner.phone
+    }
+    res.json({ property, ownerInfo })
   } catch (err) {
     res.status(500).json({ message: err.message })
   }

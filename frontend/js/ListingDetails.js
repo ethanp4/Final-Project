@@ -4,15 +4,15 @@ $(() => {
     localStorage.setItem("properties", JSON.stringify([]))
   }
 
-  var properties = JSON.parse(localStorage.getItem("properties"))
-
   //get property name from url
   var url = new URL(window.location.href);
   var propertyID = url.searchParams.get("propertyName");
   $.ajax({
     url: `${window.backendURL}/properties/${propertyID}`,
     type: 'GET',
-    success: (property) => {
+    success: (res) => {
+      var property = res.property
+      var ownerInfo = res.ownerInfo
 
       //set title
       $("#title").text(`Details for ${property.name}`)
@@ -43,6 +43,12 @@ $(() => {
           $("#submitRating").prop("disabled", true)
         }
       })
+
+      console.log(ownerInfo)
+
+      $("#ownerName").text((ownerInfo.firstName + " " + ownerInfo.lastName) == " " ? "This owner hasn't set a name" : (ownerInfo.firstName + " " + ownerInfo.lastName))
+      $("#email").text(ownerInfo.email == "" ? "This owner hasn't set an email" : ownerInfo.email)
+      $("#phone").text(ownerInfo.phone == "" ? "This owner hasn't set a phone number" : ownerInfo.phone)
     },
     error: () => {
       //if theres no valid property in the url bar then redirect to the browser

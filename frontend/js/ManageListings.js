@@ -100,7 +100,8 @@ function editListing(propertyID) {
   $.ajax({
     url: `${window.backendURL}/users/${localStorage.getItem("userID")}/properties/${propertyID}`,
     type: "GET",
-    success: (property) => {
+    success: (res) => {
+      var property = res.property
       $(`#${propertyID} .name`).html(`<input type="text" id="newName" value="${property.name}"/>`)
       $(`#${propertyID} .address`).html(`<input type="text" id="newAddress" value="${property.address}"/>`)
       $(`#${propertyID} .capacity`).html(`<input type="number" id="newCapacity" value="${property.capacity}"/>`)

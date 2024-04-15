@@ -133,20 +133,17 @@ function signIn() {
     },
     success: (res) => {
       console.log(res)
-
-
       postAuthenticate(res.user, res.accessToken)
     },
     error: (err) => {
       console.log(err)
-
       $("#signInStatus").html("Login failed")
     }
   })
 }
 
 function signOut() {
-  localStorage.setItem("signedIn", "false")
+  localStorage.clear()
   window.location.href = "LoginPage.html"
 }
 

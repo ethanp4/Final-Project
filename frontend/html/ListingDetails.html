@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap" rel="stylesheet">
@@ -28,7 +28,7 @@
 
   <h1 id="title">Details for ${propertyName}</h1>
   <div id="contents">
-    <table>
+    <table id="propertyTable">
       <style>
         th {
           text-align: left;
@@ -80,19 +80,38 @@
       </tr>
     </table>
     <br>
-    <div id="rateThisProperty">
-      <select id="userRating">
-        <option value="null">Select a rating</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
-      <button disabled id="submitRating">Submit rating</button>
-    </div>
+
+    <table id="ownerInfo">
+      <!-- <h3>Owner info</h3> -->
+      <tr>
+        <th>Owner info</th>
+      </tr>
+      <tr>
+        <!-- <th>Name:</th> -->
+        <td id="ownerName"></td>
+      </tr>
+      <tr>
+        <!-- <th>Email:</th> -->
+        <td id="email"></td>
+      </tr>
+      <tr>
+        <!-- <th>Phone:</th> -->
+        <td id="phone"></td>
+      </tr>
+    </table>
+    <!-- <div id="status"></div> -->
     <br>
-    <div id="status"></div>
+  </div>
+  <div id="rateThisProperty">
+    <select id="userRating">
+      <option value="null">Select a rating</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+    <button disabled id="submitRating">Submit rating</button>
   </div>
 </body>
 

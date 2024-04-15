@@ -21,6 +21,10 @@ select {
   height: 20px
 }
 
+button:disabled {
+  background-color: grey;
+}
+
 a,
 a:visited {
   background-color: aliceblue;

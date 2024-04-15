@@ -1,8 +1,27 @@
-table {
+#contents {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    /* flex-direction: column; */
+}
+
+table {
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; */
+    /* display: inline-block; */
+    float: left;
+    /* height: 300px; */
+    padding: 20px;
+}
+
+#ownerInfo {
+    padding-bottom: 200px;
+}
+
+#propertyTable {
+    padding-left: 100px;
 }
 
 #rateThisProperty {
@@ -11,6 +30,7 @@ table {
     align-items: center;
 }
 
-#status {
+#status,
+h3 {
     text-align: center;
 }
